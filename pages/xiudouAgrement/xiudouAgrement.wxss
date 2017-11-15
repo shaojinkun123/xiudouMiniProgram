@@ -1,0 +1,41 @@
+page {
+  background: #efefef;
+}
+
+.agrement {
+  padding: 16rpx;
+  box-sizing: border-box;
+}
+
+.h2 {
+  text-align: center;
+  width: 100%;
+  background-color: white;
+  color: red;
+  height: 37px;
+  line-height: 37px;
+  background: #fff;
+}
+.agrementContent{
+	color: #666;
+	margin: 30rpx 20rpx;
+	font-size: 36rpx;
+	line-height: 50rpx;
+}
+.h3{
+	display: block;
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+.h4{
+	display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}

@@ -1,0 +1,152 @@
+/* pages/login/login.wxss */
+.login {
+  background-color: rgb(255, 255, 255);
+}
+
+.header {
+  height: 90rpx;
+  background: #fafafa;
+  border-bottom: 1rpx solid #ddd;
+  text-align: center;
+  box-sizing: border-box;
+  line-height: 90rpx;
+}
+
+.header text {
+  margin-right: 40rpx;
+}
+#signupbtu{
+	margin-left: 20rpx;
+}
+
+input {
+  height: 100rpx;
+  margin: 0rpx 50rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  padding-right: 100rpx;
+}
+
+.switch {
+  position: relative;
+}
+
+.switch switch {
+  position: absolute;
+  right: 40rpx;
+  top: 20rpx;
+  z-index: 999;
+}
+
+#forgetPassWord {
+  float: right;
+  margin: 44rpx 50rpx;
+  font-size: 16px;
+  color: #a1a1a1;
+  position: relative;
+}
+
+.cl:after, .clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.cl, .clearfix {
+  zoom: 1;
+}
+
+button {
+  margin: 0rpx 50rpx;
+  box-sizing: border-box;
+  background: #000;
+  color: white;
+  border-radius: 0rpx;
+}
+
+.thirdLogin {
+  position: absolute;
+  bottom: 100rpx;
+  text-align: center;
+  width: 100%;
+  color: #a1a1a1;
+}
+
+image {
+  margin-top: 50rpx;
+  height: 100rpx;
+  width: 100rpx;
+}
+
+.loginBorder {
+  border-bottom: 4rpx solid #ff2e6b;
+  height: 86rpx;
+  display: inline-block;
+}
+
+.place{
+	border-bottom: 1rpx solid #e5e5e5;
+	height: 90rpx;
+	margin: 0rpx 50rpx;
+	box-sizing: border-box;
+	line-height: 90rpx;
+	color: #666;
+}
+
+.place image{
+	height: 26rpx;
+	width: 16rpx;
+	float: right;
+	margin-top: 33rpx;
+}
+.phoneNumber{
+	border-bottom: 1rpx solid #e5e5e5;
+	height: 90rpx;
+	margin: 0rpx 50rpx;
+	box-sizing: border-box;
+	display: flex;
+}
+
+.phoneNumber text{
+	border-right: 1rpx solid #e5e5e5;
+	flex: 1;
+	height: 50rpx;
+	margin-top: 20rpx;
+	line-height: 55rpx;
+	color: #666;
+}
+.phoneNumber input{
+	flex: 3;
+	margin-top: -3rpx;
+	border: none;
+}
+.xiudouAgreement{
+	font-size: 32rpx;
+	margin: 30rpx 50rpx;
+	display: flex;
+}
+.xiudouAgreement navigator{
+	margin-left: 50rpx;
+}
+.errMes{
+	margin: 0rpx 50rpx;
+	line-height: 50rpx;
+	color:#666;
+}
+.telephone{
+	height: 120rpx;
+	line-height: 120rpx;
+	border-bottom: 1rpx solid #e5e5e5;
+	margin: 0rpx 50rpx;
+	box-sizing: border-box;
+}
+.VerificationCodeButton{
+	width: 200rpx;
+	height: 60rpx;
+	position: absolute;
+	right: 0rpx;
+	top: 20rpx;
+	font-size: 24rpx;
+	z-index: 999;
+}

@@ -1,0 +1,98 @@
+<!--orderMes.wxml-->
+<view class="orderMes">
+    <view class="topTime" hidden = "{{timeHidden}}" wx:if="{{orderStatus == '已发货'}}"><text style="color:#ff2e6b;margin-top:30rpx;">{{time}}</text>后自动确认收货</view>
+    <view class="topTime" hidden = "{{hidden}}" style="margin-top:30rpx">已经自动确认收货</view>
+    <view class="title">
+        收件人信息
+    </view>
+    <view class="userMes">
+        <view class="flex">
+            <view>{{orderMes.reserver_info.name}}</view>
+            <view style="margin-left:30rpx">{{orderMes.reserver_info.phone_number}}</view>
+        </view>
+        <view style="margin-top:20rpx;">{{orderMes.reserver_info.location}}{{orderMes.reserver_info.address}}</view>
+        <image src="../../images/dizhihuabian.png" class="huabian"></image>  
+    </view>
+    <view class="userMes postMes oneLine">
+        备注：{{orderMes.reserver_info.customer_remark}}
+    </view>
+    <view class="title">
+        商品信息
+    </view>
+    <view class="productBox">
+        <view class="flex userBox">
+            <image src="{{orderMes.product_info.avatar}}" class="avatarSmall"></image>
+            <view style="margin-left:20rpx;line-height:60rpx;">{{orderMes.product_info.nick_name}}</view>
+        </view>
+        <view>
+            <view class="productMes flex" wx:for="{{orderMes.product_info.product_list}}">
+                <image src="{{item.product_head_image}}" class="image"></image>
+                <view class="text">
+                    <view class="productTitle oneLine">{{item.product_name}}</view>
+                    <view class="productTitle oneLine" style="color:#ddd;margin:20rpx 0rpx;">规格：{{item.product_type}}</view>
+                    <view class="flex between productTitle">
+                        <view>价格：<text style="color:#000;">{{item.product_price}}</text></view>
+                        <view>数量：{{item.total_count}}</view>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <view class="userBox productText" style="border-top:1rpx solid #d2d2d2">运费<text class="floatLeft">￥{{orderMes.product_info.shop_delivery_charge}}</text></view>
+                <view class="userBox productText">总计<text style="display:inline-block;margin-left:120rpx;">共{{orderMes.product_info.shop_total_count}}件商品</text><text  class="floatLeft">￥{{orderMes.product_info.total_price}}</text></view>
+                <view class="userBox productText" wx:if="{{orderMes.product_info.voucher_description}}">优惠券<text  class="floatLeft">-￥{{orderMes.product_info.voucher_price}}</text></view>      
+                <view class="userBox productText" style="border:none;">实付金额<text  class="floatLeft">￥{{finallyPay}}</text></view>
+            </view>
+            <view class="flex productTitle between" style="padding:30rpx;" wx:if="{{orderMes.voucher_price > 0}}">
+                <view></view>
+                <view>666{{orderMes.voucher_description}}</view>
+                <view>优惠券：￥{{orderMes.voucher_price}}</view>
+            </view>
+                <view class="productTitle" style="text-align:right;padding:0rpx 30rpx 30rpx 0rpx;" wx:if="{{orderMes.voucher_price > 0}}">实付金额：￥{{orderMes.product_info.total_price - orderMes.voucher_price}}</view>
+        </view>
+    </view>
+    <view class="title">订单信息</view>
+    <view class="productBox" style="padding:0rpx 20rpx;">
+        <view class="title" style="border-bottom:1rpx solid #d2d2d2;">{{orderStatus}}</view>
+        <view  class="productTitle orderElse" wx:if="{{orderMes.product_info.order_status != 1}}">支付方式：
+            <text wx:if="{{orderMes.product_info.pay_method == 1}}">微信支付</text>    
+            <text wx:if="{{orderMes.product_info.pay_method == 2}}">支付宝</text> 
+            <text wx:if="{{orderMes.product_info.pay_method == 3}}">银联支付</text> 
+            <text wx:if="{{orderMes.product_info.pay_method == 5}}">一网通支付</text> 
+        </view>
+        <view  class="productTitle orderElse">订单编号：{{orderMes.product_info.order_id}}</view>
+        <view  class="productTitle orderElse">下单时间：{{orderMes.product_info.order_time}}</view>
+        <view  class="productTitle orderElse">支付时间：{{orderMes.product_info.pay_time}}</view>
+        <view  class="productTitle orderElse">发货时间：{{orderMes.product_info.delivery_time}}</view>
+    </view>
+    <view class="title" wx:if="{{orderMes.product_info.logistics_number}}">物流信息</view>
+    <view class="productBox" style="padding:0rpx 20rpx;" wx:if="{{orderMes.product_info.logistics_number}}">
+        <view class="title flex between" style="border-bottom:1rpx solid #d2d2d2;">
+            <view>{{orderMes.product_info.logistics_name}}</view>
+            <view>{{orderMes.product_info.logistics_number}}</view>
+        </view>
+        <view wx:for="{{logisticMes}}" class="logisticBox">
+            <view style="margin-bottom:16rpx">{{item.AcceptStation}}</view>
+            <view>{{item.AcceptTime}}</view>    
+        </view>
+    </view>
+</view>
+
+
+<view class="bottomBar">
+    <navigator open-type="redirect" url="../returnGoods/returnGoods?orderId={{orderId}}&price={{finallyPay}}&orderStatus=2&voucher={{orderMes.product_info.voucher_price}}" class="barTap" wx:if="{{orderStatus == '待发货' && orderMes.product_info.return_order_status != 1}}">退货</navigator>
+    <navigator  open-type="redirect" url="../returnMes/returnMes?orderId={{orderId}}&price={{finallyPay}}" class="barTap" wx:elif="{{orderStatus == '待发货' && orderMes.product_info.return_order_status == 1}}">退货详情</navigator>
+    <view class="barTap flex between" wx:if="{{orderStatus == '待付款'}}">
+        <view class="barTap" bindtap="closeOrder">取消订单</view>
+        <view class="barTap checkTap" bindtap="wechatPay">继续支付</view>
+    </view>
+
+    <view class="barTap flex between" wx:if="{{orderStatus == '已发货' && !backMes}}">
+        <navigator  open-type="redirect" url="../returnGoods/returnGoods?orderId={{orderId}}&price={{orderMes.product_info.shop_total_price}}" class="barTap">退货</navigator>
+        <view class="barTap" bindtap="extendTime"  style="border-left:1rpx solid #666;margin-top:35rpx;line-height:30rpx;height:30rpx;border-top:none;" hidden="{{extend}}">延长收货期</view>
+        <view class="barTap checkTap" hidden="{{timeHidden}}" bindtap="makeSure">确认收货</view>
+    </view>
+
+    <view class="barTap flex between" wx:if="{{orderStatus == '已发货' && backMes}}">
+        <navigator  open-type="redirect" url="../returnMes/returnMes?orderId={{orderId}}&price={{finallyPay}}" class="barTap" wx:if="{{backMes}}">退货详情</navigator>
+    </view>
+</view>

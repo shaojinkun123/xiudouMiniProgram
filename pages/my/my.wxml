@@ -1,0 +1,20 @@
+<!--my-->
+<view style="width:{{sysWidth}};overflow:hidden">
+    <image src="{{userInfo.avatar}}" class="filterBlur" wx:if="{{userInfo.avatar}}"></image>
+    <image src="../../images/weidegnlubeijing.png" class="filterBlur" style="filter:none;" wx:else ></image>
+    <picker-view class="myHeader">
+        <image src="{{userInfo.avatar}}" class="avatarBig" wx:if="{{userInfo.avatar}}"></image>
+        <view class="classname" wx:else>
+                <image src="../../images/weidegnlutouxiang.png" class="avatarBig" catchtap="reLogin"></image>
+                <text style="color:#fff;position:relative;left:20px;top:-20px">授权登陆</text>
+        </view>
+        <view style="margin:50rpx 30rpx;">
+            <view style="color:white;margin:18rpx 0rpx 26rpx 0rpx;" class="oneLine">{{userInfo.nick_name}}</view>
+        </view>
+    </picker-view> 
+    <view wx:for="{{userMenu}}" style="position:relative">
+        <image src="{{item.icon}}" class="icon"></image>
+        <navigator url="{{item.url}}" class="userMenu">{{item.menu}}</navigator> 
+        <image src="../../images/grayArrow.png" class="grayArrow"></image>
+    </view>
+</view>

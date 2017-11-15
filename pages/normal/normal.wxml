@@ -1,0 +1,88 @@
+<!--normal.wxml-->
+<!--分享详情-->
+<view class="dialog" hidden="{{dialog}}" style="height:{{sysHeight}}px;width:{{susWidth}}">
+        <image src="../../images/close.png" style="height:120px;width:80px;margin-left:80%;" bindtap="close"></image>
+        <video src="{{normalMes.normal_video_stream}}" id="normalVideo" autoplay="{{autoplay}}" style="width:{{sysWidth}}px;margin-top:{{sysWidth/6}}px" bindplay="playCountAdd"></video>
+</view>
+<!-- <scroll-view scroll-y="true" lower-threshold='50px' bindscrolltolower="loadMoreComment" style="height:{{sysHeight}}px;background:white"> -->
+     <view class="proUser">
+            <image src="{{normalMes.user.avatar}}" class="avatar"></image>
+            <image src="../../images/daren.png" class="shoperIcons" wx:if="{{normalMes.user.certification.if_celebrity_vip == 1}}"></image>
+            <image src="../../images/geren.png" class="shoperIcons" wx:if="{{normalMes.user.certification.if_vip == 1}}"></image>
+            <image src="../../images/guanfang.png" class="shoperIcons" wx:if="{{normalMes.user.certification.if_official_vip == 1}}"></image>
+            <view class="shopInfo">
+                <view>
+                    <text style="font-size:28rpx;color:#333" class="oneLine">{{normalMes.user.nick_name}}</text>
+                </view>
+                <view>
+                    <text style="font-size:20rpx;color:#808080;" wx:if="{{normalMes.user.friend_shop_count}}">粉丝 {{normalMes.user.fans_count}} | 关注{{normalMes.user.friend_shop_count}}</text>
+                     <text style="font-size:20rpx;color:#808080;" wx:else>粉丝 {{normalMes.user.fans_count}} | 关注 0</text>
+                </view>                
+            </view>
+            <image src="../../images/faved.png" class="faved" hidden="{{faved}}" bindtap="faved"></image>
+            <image src="../../images/hasfaved.png" class="faved" hidden="{{hasFaved}}" bindtap="hasfaved"></image>
+        </view>
+    <view>
+        <view class="proName" style='margin-bottom:10rpx;'>{{normalMes.title}}</view>
+            <view class='richText' wx:for='{{normalMes.list}}'>
+                <text wx:if="{{item.type == 0}}">{{item.text}}</text>
+                <text wx:if="{{item.type == 1}}">{{item.text}}</text>
+                <image src="{{item.normal_imageurl}}" mode="widthFix" style="width:{{item.normal_imagewidth}}rpx;height:{{item.normal_imageHeight}}rpx;max-width:100%;" wx:if="{{item.type == 2}}"></image>
+                   <video style="width:100%;height:750rpx;" wx:if="{{item.type == 3}}" src="{{item.normal_video_https_url}}" ></video>   
+               <navigator wx:if="{{item.type == 4}}" url="../product/product?shopId={{item.product_id}}" class="aboutProduct flex" style='border:1px solid #d2d2d2'>
+                 <image class="aboutImg" src="{{item.product_head_image}}"></image> 
+                <view style="width:60%">
+                    <view class="aboutName oneLine">{{item.product_name}}</view>
+                    <view class="aboutPrice">￥{{item.product_price}}</view>
+                </view>
+              </navigator>  
+            </view>
+         <view style="padding:0rpx 40rpx;padding-top:0rpx;" >
+            <navigator url="../topic/topic?topic={{item}}" class="topic" wx:for="{{normalMes.normal_topics}}">#{{item}}</navigator> 
+        </view>
+        <view class="playCount">浏览{{normalMes.normal_views_count}}</view>       
+        <!--相关商品-->
+        <view wx:if="{{normalMes.internal_products != ''}}">
+            <view class="internalProducts">相关商品</view>
+            <navigator url="../product/product?shopId={{item.product_id}}" wx:for="{{normalMes.internal_products}}" class="aboutProduct flex">
+                <image src="{{item.product_head_image}}" class="aboutImg"></image>
+                <view style="width:60%">
+                    <view class="aboutName oneLine">{{item.product_name}}</view>
+                    <view class="aboutPrice">￥{{item.product_price}}</view>
+                </view>
+            </navigator> 
+        </view>  
+        <!--评论详情-->
+        <view style="padding:0rpx 40rpx" style="margin-left:40rpx;padding-bottom:40rpx;">
+        <view class="internalProducts" style="margin-left:0rpx;" wx:if="{{total}}">评论 {{total}}</view>
+            <view wx:for="{{commentList}}" class="BuyerShowBox">
+                <picker-view clss="BuyerShowBoxUser">
+                    <image src="{{item.user_info.avatar}}" class="avatarSmall" style='background:url(../../images/001.jpg);background-size:cover;border:1rpx solid #d2d2d2;'></image>
+                    <view class='showerName'>
+                        <picker-view>
+                            <view style="color:#4fa9f3" class="oneLine">{{item.user_info.nick_name}}</view>
+                            <view class="zanBox" wx:if="{{item.isCommented == 0}}" >
+                                <image src="../../images/zan.png" class="zan"  bindtap="makeZan" data-id="{{item.id}}" data-pid="{{item.pid}}"   data-index="{{index}}"></image><text>{{item.zan_count}}</text>   
+                            </view> 
+                            <view class="zanBox" wx:else>
+                                <image src="../../images/zanOver.png" class="zan" ></image><text>{{item.zan_count}}</text>   
+                            </view>                 
+                        </picker-view>
+                        <view wx:if="{{item.city!=''}}" class="showCity">{{item.city}}</view>
+                        <view wx:else-if="{{item.city==''}}" class="showCity">秀兜网友</view>
+                    </view>
+                </picker-view>
+                <view class="buyerText">
+                    <view class="comment" wx:if="{{!item.target_user_info}}">{{item.content}}</view>
+                    <view class="comment" wx:else>回复<text style="color:#ff2e6b">{{item.target_user_info.nick_name}}:</text>{{item.content}}</view>
+                </view>
+            </view>
+            <view hidden="{{hidden}}" style="text-align:center;height:100rpx;">
+                <image src="../../images/jiazai2.gif" style="height:60rpx;width:60rpx;"></image>
+            </view>   
+            <view hidden="{{endImg}}" style="text-align:center;height:100rpx;margin-left:-30rpx;">
+                <image src="../../images/endImg.png" style="width:{{sysWidth}};height:100%"></image>
+            </view>            
+        </view> 
+    </view>
+<!-- </scroll-view> -->

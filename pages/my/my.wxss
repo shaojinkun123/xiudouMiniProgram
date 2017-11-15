@@ -1,0 +1,50 @@
+.myHeader{
+    position: absolute;
+    top: 0rpx;
+    left: 0rpx;
+    height: 180rpx;
+    width: 100%;
+    background: rgba(0,0,0,.2)
+}
+.userMenu{
+    font-size: 30rpx;
+    color: #1a1a1a;
+    padding-left: 60rpx;
+    height: 120rpx;
+    line-height: 120rpx;
+    margin: 0rpx 30rpx;
+    border-bottom: 1rpx solid #b2b2b2;
+}
+.icon{
+    position: absolute;
+    top: 43rpx;
+    height: 34rpx;
+    width: 34rpx;
+    margin-left: 30rpx;
+}
+.filterBlur{
+    filter:blur(25rpx);
+    width: 100%;
+    height: 180rpx;
+}
+.whiteArrow{
+    height: 30rpx;
+    width: 18rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 75rpx;
+}
+.whiteArrow{
+    height: 30rpx;
+    width: 18rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 75rpx;
+}
+.grayArrow{
+    height: 30rpx;
+    width: 18rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 45rpx;
+}

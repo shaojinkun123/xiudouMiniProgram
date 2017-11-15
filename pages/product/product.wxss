@@ -1,0 +1,292 @@
+@import "../../app.wxss";
+.topTab{
+   text-align:center;
+   width: 100%;
+   background: white;
+}
+.proName{
+    font-size: 40rpx;
+    color: #1a1a1a;
+    margin: 30rpx 40rpx 0rpx 40rpx;
+}
+.proPrice{
+    font-size: 40rpx;
+    color: #f83269;
+    margin: 30rpx;   
+}
+.playCount{
+    font-size: 20rpx;
+    color: #808080;
+    margin: 0rpx 40rpx 40rpx 40rpx;
+}
+.proText{
+    font-size: 30rpx;
+    color: #666;
+    margin: 0rpx 40rpx;
+    padding-bottom: 40rpx;
+}
+.proUser{
+    position: relative;
+    padding: 30rpx 0rpx;
+    border-top: 1rpx solid #ccc;
+    border-bottom: 1rpx solid #ccc;
+    margin: 0px 40rpx;
+}
+.shopInfo{
+    margin-top: -94rpx;
+    margin-left: 110rpx;
+    width: 200rpx;
+}
+.faved{
+    height: 50rpx;
+    width: 120rpx;
+    position: absolute;
+    right: 0rpx;
+    top: 45rpx;
+}
+.shoperIcon{
+    height: 40rpx;
+    width: 40rpx;
+    margin: 20rpx 20rpx 0rpx 0rpx;
+}
+.shoperIcons{
+    height: 40rpx;
+    width: 40rpx;
+    position: relative;
+    left: -30rpx;
+    top: 5rpx;
+}
+.oneTab{
+    width: 100%;
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom:2rpx solid #b2b2b2; 
+}
+.tab{
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    width: 50%;
+}
+.tab1{
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    width: 50%;
+    color: #808080;
+}
+.show{
+    display:block;
+}
+.hidden{
+    display:none;
+}
+.BuyerShowBox{
+    margin: 30rpx 0rpx 30rpx 30rpx;
+    width: 100%;
+}
+.BuyerShowBoxUser{
+    position: relative;
+}
+.showerName{
+    position: absolute;
+    top: 0rpx;
+    left: 70rpx;
+    line-height: 1;
+    font-size: 28rpx;
+    color: #333;
+    font-weight: 100;
+}
+.showCity{
+    font-size: 20rpx;
+    text-align: left;
+    margin-top: 10rpx;
+    line-height: 1;
+}
+.buyerText{
+    margin-left: 70rpx;
+    margin-right: 59rpx;
+    border-bottom:1rpx solid #ddd;
+}
+.comment{
+    margin-top: 30rpx;
+    font-size: 35rpx;
+    color: #000;
+    text-align: left;
+    line-height: 1.2;
+    width: 610rpx;
+    word-break:break-all;
+}
+.Bprice{
+    font-size: 20rpx;
+    text-align: left;
+    line-height: 1;
+    margin: 30rpx 0rpx;
+    color: #b2b2b2;
+}
+.userShowImgs{
+    height: 183.33rpx;
+    width: 183.33rpx;
+    float: left;
+    margin: 0rpx 20rpx 20rpx 0rpx;
+    background: url('https://images.xiudou.net/Public/images/upload/normal/201706/545286fcd8ee964bcd266c64d9952ade_162_162.png');
+    background-size: cover;
+}
+.playImg{
+    position: absolute;
+    top: 50rpx;
+    left: 50rpx;
+    height: 90rpx;
+    width: 90rpx;
+}
+.dialog{
+    background: #000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 99;
+}
+.showerSwiper{
+    z-index: 100;
+    position: fixed;
+    top: 20%;
+    height: 100rpx;
+}
+.dialogVideo{
+    width: 100%;
+}
+.closeImg{
+    float: right;
+    margin:30rpx 10rpx 30rpx 30rpx;
+    height: 240rpx;
+    width: 160rpx;
+}
+.buy{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 100rpx;
+    font-size: 35rpx;
+    text-align: center;
+    line-height: 100rpx;
+    color: #fff;
+}
+.userShowSwiper{
+    z-index: 100;
+}
+.shopCar{
+    color: #aaa;
+    width: 40%;
+    background: #f5f5f5;
+}
+.buyNow{
+    background: #ff2e6b;
+    width: 60%;
+}
+.spec{
+    position: fixed;
+    bottom: 0px;
+    z-index: 2;
+    padding: 30rpx;
+    background: #fff;
+    width: 92%;
+    height: 820rpx;
+}
+.productMessage{
+    padding-bottom: 30rpx;
+    border-bottom: 1rpx solid #bbb;
+}
+.minProdcutImg{
+    height: 120rpx;
+    width: 120rpx;
+}
+.close{
+    height: 50rpx;
+    width: 50rpx;
+    position: absolute;
+    right:0rpx;
+    top: 35rpx;
+}
+.specS{
+    display: inline-block;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0rpx 20rpx;
+    border: 1rpx solid #999; 
+    margin-right: 20rpx;
+    background: white;
+    margin-bottom: 25rpx;
+}
+input{
+    border-radius: 0;
+    background: #fff;
+    border: 1rpx solid #f1f1f1;
+    height: 60rpx;
+    width: 160rpx;
+    line-height: 60rpx;
+    text-align: center;
+}
+.shopNum{
+    border-left: none;
+    border-right: none;
+    width: 120rpx;
+}
+.nextGo{
+    height: 90rpx;
+    width: 100%;
+    background: #ff2e6b;
+    text-align: center;
+    color: #fff;
+    border-radius: 0px;
+}
+.aaa{
+    background: #ff2e6b;
+    color: white;
+    border:1rpx solid #ff2e6b;
+}
+.add{
+    height: 60rpx;
+    width: 60rpx;
+    border: 1rpx solid #ddd;
+}
+.bottomSlider{
+    width: 100%;
+    position: fixed;
+    bottom: 0rpx;
+    background: white;
+}
+.sliderEle{
+    height: 160rpx;
+    margin: 0rpx 30rpx;
+    border-bottom: 1rpx  solid #ddd;
+}
+.sliderImg{
+    height: 60rpx;
+    width: 60rpx;
+    margin-top: 50rpx;
+    margin-right: 50rpx;
+}
+.sliderTitle{
+    margin-top: 44rpx;
+    font-size: 32rpx;
+    color: #1a1a1a;
+}
+.sliderText{
+    font-size: 26rpx;
+    color: #666;
+    margin-top: 20rpx;
+}
+.model{
+    position: fixed;
+    top: 0rpx;
+    background: rgba(0,0,0,.6);
+}
+.topic{
+    background: #000;
+    color: white;
+    padding: 10rpx;
+    font-size: 30rpx;
+    display: inline-block;
+    margin: 0rpx 20rpx 20rpx 0rpx;
+}

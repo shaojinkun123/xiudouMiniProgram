@@ -1,0 +1,5 @@
+<!--user-->
+<!-- <view wx:for="{{userMenu}}" style="position:relative">
+    <view class="userMenu">{{item.menu}}</view>
+    <image src="../../images/grayArrow.png" class="grayArrow"></image>
+</view> -->

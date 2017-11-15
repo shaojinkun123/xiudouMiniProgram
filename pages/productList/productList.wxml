@@ -1,0 +1,46 @@
+<!--shopCar-->
+<view>
+    <view class="Box" style="padding-bottom:102rpx;">
+        <view wx:for="{{product}}" class="productList" style="width:{{sysWidth-30}}px" data-productid="{{item.product_id}}" data-sid="{{item.sid}}"  bindtouchstart="mytouchstart" bindtouchend="mytouchend" bindtap="toProduct" bindlongtap="delProduct">
+                <image src="../../images/unchecked.png" class="checkImg" wx:if="{{item.is_select == 0 && item.is_on_market !=0}}"  data-type="{{item.product_type}}" catchtap="checkChlids" data-index="{{index}}"></image>
+                <view class="checkView" wx:elif="{{item.is_on_market == 0}}"></view>
+                <image src="../../images/checked.png" class="checkImg" wx:else  data-type="{{item.product_type}}" catchtap="checkChlids" data-index="{{index}}"></image>
+                <image src="{{item.product_image}}" class="proImg"></image>
+                <view style="width:60%;margin-left:30rpx;">
+                    <text style="font-size:20px;line-height:21px;" class="oneLine">{{item.product_name}}</text>
+                    <text style="font-size:12px;line-height:13px;" class="oneLine">型号：{{item.product_type}}</text>
+                    <text style="font-size:12px;line-height:13px;" class="oneLine">￥{{item.product_price}}</text>
+                    <picker-view style="margin-top:15rpx;position:relative;" wx:if="{{item.is_on_market != 0}}">
+                        <image class="add" src="../../images/del.png" wx:if="{{item.product_count < 2}}"/>
+                        <image class="add" catchtap="reduceShopNum" wx:else src="../../images/canDel.png" data-index="{{index}}"/>
+                        <input type="number" value="{{item.product_count}}" disabled="true"/>
+                        <image class="add" catchtap="plusShopNum"  src="../../images/canAdd.png" data-index="{{index}}"/>
+                    </picker-view>
+                    <picker-view style="margin-top:15rpx;" wx:else>
+                        <view class="add del">已下架</view>
+                    </picker-view>
+                </view> 
+        <view class="dialog" wx:if="{{item.is_on_market == 0}}">
+        
+        </view>
+        </view>
+        <!--<view class="gray"></view>-->
+        <view class="flex">
+            <view bindtap="selectAll">
+                <image src="../../images/unchecked.png" class="checkImg" style="height:30rpx;width:30rpx;margin:0rpx 30rpx" wx:if="{{tap == 1}}"></image>
+                <image src="../../images/checked.png" class="checkImg" style="height:30rpx;width:30rpx;margin:0rpx 30rpx" wx:else></image>
+                <view style="display:inline-block;line-height:100rpx;height:100rpx;">全选</view>
+            </view>         
+            <view style="line-height:40rpx;padding-top:20rpx;margin-left:100rpx;">
+                <view>合计：￥{{buy}}</view>
+                <view style="font-size:12px;color:#ddd">不含运费</view>
+            </view>  
+            <view class="buy" bindtap="takeAllShop">
+                结算
+            </view>
+            <view class="buy" style="background:#ddd" wx:if="{{checkNum == 0}}">
+                结算
+            </view>
+        </view>          
+    </view>
+</view>

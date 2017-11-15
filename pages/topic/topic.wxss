@@ -1,0 +1,41 @@
+@import "../../app.wxss";
+.firstInfo{
+    position: relative;
+    margin-bottom:2rpx;
+}
+.indexTextMes{
+    position: absolute;
+    bottom: 0px;
+    width: 90%;
+    padding: 40rpx;
+    color: white;
+}
+.mesDialog{
+    position: absolute;
+    top: 0px;
+    background: black;
+    height: 100%;
+    width: 100%;
+    opacity: .2;
+}
+.price{
+    font-size:28rpx;
+    background:#ff2e6b;
+    display:inline-block;
+    height: 50rpx;
+    line-height: 58rpx;
+    padding: 0px 15rpx;
+    margin-bottom:30rpx; 
+}
+.commission{
+    background: blue;
+}
+.mesBox{
+    height: 300px;
+}
+.headTitle{
+    margin: 30rpx;
+    line-height: 1.5;
+    font-size: 25rpx;
+    color: #333;
+}

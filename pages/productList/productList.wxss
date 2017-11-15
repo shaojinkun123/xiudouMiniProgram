@@ -1,0 +1,100 @@
+page{
+    background: #f2f2f2;
+}
+.Box{
+    position: relative;
+}
+.shopName{
+    margin-top:30rpx;
+    padding-bottom:30rpx;
+    padding-left:30rpx;
+    border-bottom:1rpx solid #f1f1f1;
+}
+.proImg{
+    margin-left: 25rpx;
+    height: 160rpx;
+    width: 160rpx;
+}
+.productList{
+    background: white;
+    border-bottom: 1rpx solid #f1f1f1;
+    padding: 30rpx 30rpx;
+    display: flex;
+    position: relative;
+}
+text{
+    display: block;
+}
+.add{
+    height: 1.4rem;
+    width: 1.4rem;
+    border: 1rpx solid #d2d2d2;
+}
+input{
+    width: 100rpx;
+    border-top: 1rpx solid #d2d2d2;
+    border-bottom: 1rpx solid #d2d2d2;
+    text-align: center;
+}
+.middle{
+    line-height: 160rpx;
+}
+.gray{
+    height: 300rpx;
+    background: #f2f2f2;
+}
+.modal{
+    position: absolute;
+    top: 0rpx;
+    left: 0rpx;
+    height: 100%;
+    width: 13%;
+    background: red;
+}
+.checkImg{
+    height: 50rpx;
+    width: 50rpx;
+    margin-top: 50rpx;
+    position: relative;
+}
+.checkView{
+    height: 50rpx;
+    width: 50rpx;
+    margin-top: 50rpx;
+    background: #999;
+    border-radius: 50%;
+}
+.flex{
+    height: 100rpx;
+    background: #fafafa;
+    position: fixed;
+    bottom: -1rpx;
+    width: 100%;
+    border-top: 1rpx solid #ddd;
+    line-height: 100rpx;
+    z-index: 99;
+}
+.buy{
+    background: #ff2e6b;
+    width: 180rpx;
+    text-align: center;
+    color: white;
+    position: absolute;
+    right: 0rpx;
+}
+.dialog{
+    height: 226.5rpx;
+    background: rgba(255,255,255,.6);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+.del{
+     color:white;
+     background:#999;
+     width:120rpx;
+     text-align:center;
+     line-height:1.4rem;
+     font-size:0.8rem;
+}

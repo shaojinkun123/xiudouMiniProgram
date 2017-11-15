@@ -1,0 +1,51 @@
+@import "/wxSearch/wxSearch.wxss";
+@import '../index/index.wxss';
+.cancle{
+    right: 140rpx;
+    z-index: 999;
+}
+.searchIcon{
+    left: 45rpx;
+}
+.cancleBox{
+    height:100rpx;
+    width:100rpx;
+    position:absolute;
+    z-index:999;
+    right:100rpx;
+}
+.cancleBox image{
+    height:35rpx;
+    width:35rpx;
+    margin-top:34rpx;
+    margin-left:17px;
+}
+.tapList{
+    display: flex;
+    justify-content: space-around;
+    height: 70rpx;
+    line-height: 55rpx;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #f2f2f2;
+    box-sizing: border-box;
+}
+.selected{
+    color: #000;
+    font-weight: bold;
+}
+.select{
+    color: #b2b2b2;
+}
+.topicBox{
+    margin: 30rpx;
+    box-sizing: border-box;
+}
+.noContent{
+    height: 350rpx;
+    width: 400rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200rpx;
+    margin-top: -175rpx;
+}

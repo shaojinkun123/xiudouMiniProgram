@@ -1,0 +1,46 @@
+.firstInfo{
+    position: relative;
+    background: red;
+    margin-bottom:2rpx;
+}
+.indexTextMes{
+    position: relative;
+    bottom: 0px;
+    color: white;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.2)
+}
+.mesDialog{
+    position: absolute;
+    top: 0px;
+    background: black;
+    height: 100%;
+    width: 100%;
+    opacity: .2;
+}
+.price{
+    font-size:28rpx;
+    font-weight: 700;
+    background:#ff2e6b;
+    display:inline-block;
+    height: 50rpx;
+    line-height: 50rpx;
+    padding: 0px 15rpx;
+    color: #fff;
+    margin-bottom: 30rpx;
+}
+.commission{
+    background: blue;
+}
+.mesBox{
+    height: 300px;
+}
+.search{
+    width: 40rpx;
+    height: 40rpx;
+    position: fixed;
+    top: 30rpx;
+    z-index: 99;
+    right: 30rpx;
+}

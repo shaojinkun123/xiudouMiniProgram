@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/normal/normal",
+    "pages/product/product",
+    "pages/topic/topic",
+    "pages/kefu/kefu",
+    "pages/buyInfo/buyInfo",
+    "pages/addAddress/addAddress",
+    "pages/addressList/addressList",
+    "pages/productList/productList",
+    "pages/allOrder/allOrder",
+    "pages/orderMes/orderMes",
+    "pages/returnGoods/returnGoods",
+    "pages/returnMes/returnMes",
+    "pages/voucher/voucher",
+    "pages/my/my",
+    "pages/loginFail/loginFail",
+    "pages/login/login",
+	"pages/xiudouAgrement/xiudouAgrement",
+    "pages/search/search"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "秀兜",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color":"#808080",
+    "selectedColor":"#000",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath":"images/tabbar.png",
+      "selectedIconPath":"images/tabbars.png"
+    }, {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath":"images/my.png",
+      "selectedIconPath":"images/mys.png"
+    }]
+  }
+}

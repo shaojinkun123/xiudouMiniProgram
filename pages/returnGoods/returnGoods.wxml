@@ -1,0 +1,51 @@
+<!--returnGoods.wxml-->
+<view class="title">退货信息</view>
+    <picker class="reason" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker" wx:if="{{array[index]!=='取消' && array[index]!=='其他'}}">
+        退货原因:{{array[index]}}
+        </view>
+        <view class="picker oneLine" wx:elif="{{array[index] =='其他'}}" style="width:90%">
+            退货原因:{{returnReason}}
+        </view>
+        <view class="picker" wx:else>
+        退货原因:
+        </view>
+        <image src="../../images/arrowRight.png" class="arrowRight"></image>
+    </picker>
+    <view class="picker reason flex between" style="border:none">
+        退款金额:<input type="digit" value="{{maxPrice}}" style="flex:3;margin-top:20rpx;" bindblur="takeReturnPrice"/>
+    </view>
+    <view style="margin-left:180rpx;font-size:16px;color:#666;margin-bottom:30rpx;">最多￥{{maxPrice}}</view>
+<view class="title">退货方式</view>
+    <view class="flex" style="margin:30rpx;">
+        <view class="flex between" style="margin-right:30%;" bindtap="changeStatus"  wx:if="{{unChecked}}"><view class="circle"></view><text>快递</text></view>
+        <view class="flex between" style="margin-right:30%;color:#ff2e6b" bindtap="changeStatus" wx:elif="{{checked}}"><view class="circleC"></view><text>快递</text></view>
+        <view class="flex between" wx:if="{{checked}}" bindtap="changeStatus"><view class="circle"></view><text>无物流</text></view>
+        <view class="flex between" style="color:#ff2e6b" wx:else><view class="circleC"></view><text>无物流</text></view>
+    </view>
+
+<view wx:if="{{checked}}">
+    <view class="title">快递单号</view>
+    <view class="picker reason flex between" style="border:none">
+        手动填写:<input type="number" style="flex:3;margin-top:20rpx;" bindblur="takeExpressNumber"/>
+    </view>
+    <view class="title">快递公司</view>
+    <picker class="reason" bindchange="bindExpressChange" value="{{index}}" range="{{expressArray}}">
+        <view class="picker">
+        请选择:{{expressArray[indexS]}}
+        </view>
+    </picker>
+</view>
+
+<view class="button" bindtap="returnSure" hidden="{{sure}}">确定</view>
+<navigator open-type="redirect"  url="../returnMes/returnMes?orderId={{orderId}}&backMes=backMes" class="button" hidden="{{!sure}}" style="background:#f2f2f2;color:#666">退货详情</navigator>
+<view wx:if="{{show}}" style="height:{{sysHeight}}px;width:{{sysWidth}}px;background:rgba(0,0,0,0.3);position:absolute;top:0px;">
+    <view class="otherBox">
+        <view>填写原因</view>
+        <textarea class="textarea" bindinput="takeReason" cursor-spacing="120"/>
+        <view class="reasonButton" wx:if="{{!returnReason}}">确定</view>
+        <view class="reasonButton" bindtap="hiddenBox" style="background:#ff2e6b;color:#fff" wx:else>确定</view>
+    </view>
+</view>
+    
+

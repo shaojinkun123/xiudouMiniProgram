@@ -1,0 +1,61 @@
+<scroll-view  scroll-y="true" lower-threshold="50rpx" 	bindscrolltolower="takeMore" style="height:{{sysHeight}}px;">
+    <view class="flex">
+        <view style="width:{{sysWidth/4}}px;" bindtap="allOrder" class="{{selected4 == 1?'pink':'none'}}">
+            <view class="num">{{num[0]}}{{select}}</view>
+            <view class="text">全部订单</view>
+        </view>
+        <view  style="width:{{sysWidth/4}}px;" bindtap="waitIngOrder" class="{{selected == 1?'pink':'none'}}">
+            <view class="num">{{num[1]}}</view>
+            <view class="text">待付款</view>
+        </view>
+        <view style="width:{{sysWidth/4}}px;" bindtap="payIngOrder"   class="{{selected1 == 1?'pink':'none'}}">
+            <view class="num">{{num[2]}}</view>
+            <view class="text">待收货</view>
+        </view>
+        <view style="width:{{sysWidth/4}}px;" bindtap="successOrder"   class="{{selected2 == 1?'pink':'none'}}">
+            <view class="num">{{num[3]}}</view>
+            <view class="text">已完成</view>
+        </view>
+    </view>
+    <view wx:for="{{orderMes}}" class="orderBox">
+        <view class="title">
+            <image src="{{item.user.avatar}}" class="avatarSmall"></image>
+            <view style="padding-left:70rpx;font-size:12px;width:60%;" class="oneLine">{{item.user.nick_name}}</view>
+            <view wx:if="{{item.order_status == 1}}" style="font-size:12px;">待付款</view>
+            <view wx:elif="{{item.order_status == 2 && item.return_order_status == 0}}"style="font-size:12px;">待发货</view>
+            <view wx:elif="{{item.order_status == 3 && item.return_order_status == 0}}"style="font-size:12px;">待收货</view>
+            <view wx:elif="{{item.order_status == 4 && item.return_order_status == 0}}"style="font-size:12px;">已完成</view>
+            <view wx:elif="{{item.order_status == 5 && item.return_order_status == 0}}"style="font-size:12px;">支付中</view>
+            <view wx:elif="{{item.return_order_status == 1}}"style="font-size:12px;">退货中</view>
+            <view wx:elif="{{item.return_order_status == 3}}"style="font-size:12px;">卖家拒绝退货</view>
+            <view wx:else style="font-size:12px;">已关闭</view>
+        </view>
+        <view data-orderId="{{item.order_id}}" data-index="{{index}}" data-orderStatus="{{item.order_status}}" bindtouchstart="mytouchstart" bindtouchend="mytouchend" bindtap="toOrder" bindlongtap="delOrder">
+            <view class="productBox" wx:for="{{item.products}}">
+                <image src="{{item.product_head_image}}" class="image"></image>
+                <view class="productMes">
+                    <view class="oneLine">{{item.product_name}}</view>
+                    <view class="oneLine" style="margin:20rpx 0rpx;">规格：{{item.product_specification}}</view>
+                    <view class="oneLine price">
+                        <view>
+                            价格：￥{{item.product_price}}
+                        </view>
+                        <view>
+                            数量：{{item.total_count}}
+                        </view>
+                    </view>
+                </view>
+            </view> 
+        </view>
+        <view class="orderBanner">
+            <view>支付金额:<text style="display:inline-block;float:right">￥{{item.finallyMoney}}</text></view>
+        </view> 
+        <view class="gray"></view>
+    </view>
+    <view hidden="{{hidden}}" style="text-align:center;height:100rpx;">
+        <image src="../../images/jiazai2.gif" style="height:60rpx;width:60rpx;"></image>
+    </view>   
+    <view hidden="{{endImg}}" style="text-align:center;height:140rpx;">
+        <image src="../../images/endImg.png" style="width:{{sysWidth}};height:100%"></image>
+    </view>
+</scroll-view>

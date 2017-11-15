@@ -1,0 +1,106 @@
+.title{
+    height: 90rpx;
+    font-size: 30rpx;
+    line-height: 90rpx;
+}
+.userMes{
+    height: 80rpx;
+    font-size: 25rpx;
+    border: 1rpx solid #000;
+    padding: 30rpx 20rpx;
+    line-height: 30rpx;
+    position: relative;
+}
+.productBox{
+    border: 1rpx solid #000;
+    padding: 30rpx;
+    padding-bottom: 0rpx;
+}
+.postMes{
+    height: 90rpx;
+    padding: 0rpx 16rpx;
+    line-height: 90rpx;
+    margin-top: 30rpx;
+}
+.image{
+    height: 140rpx;
+    width: 140rpx;
+    margin: 20rpx;
+    margin-left: 0rpx;
+}
+.text{
+    width: 70%;
+    padding: 20rpx 0rpx;
+}
+.huabian{
+    height: 6rpx;
+    width: 100%;
+    position: absolute;
+    bottom: 0rpx;
+    left: 0rpx;
+}
+.productTitle{
+    font-size: 25rpx;
+    color: #646464;
+}
+.orderElse{
+    line-height: 60rpx;
+}
+.barTap{
+    height: 100rpx;
+    font-size: 30rpx;
+    background: #fafafa;
+    line-height: 100rpx;
+    text-align: center;
+    color: #666;
+    width: 100%;
+    border-top: 1rpx solid #f2f2f2;
+}
+.bottomBar{
+    position: fixed;
+    bottom: 0rpx;
+    width: 100%;
+}
+.avatarSmall{
+    height: 50rpx;
+    width: 50rpx;
+}
+.userBox{
+    height: 50rpx;
+    font-size: 25rpx;
+    line-height: 25rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 1rpx solid #d2d2d2;
+}
+.orderMes{
+    padding: 30rpx;
+    padding-bottom: 130rpx;
+    padding-top:0rpx;
+}
+.productText{
+    height: 90rpx;
+    padding: 0rpx;
+    line-height: 90rpx;
+}
+.checkTap{
+    background: #ff2e6b;
+    color: white;
+}
+.topTime{
+    text-align: center;
+    font-size: 20rpx;
+    color: #333;
+    height: 90rpx;
+    line-height: 88rpx;
+    border: 1rpx solid #000;
+    margin-top:30rpx;
+}
+.floatLeft{
+    display: inline-block;
+    float: right;
+}
+.logisticBox{
+    border-bottom: 1rpx solid #d2d2d2;
+    padding: 30rpx 0rpx;
+    font-size: 25rpx;
+}

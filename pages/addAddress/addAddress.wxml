@@ -1,0 +1,101 @@
+<!--addAddress-->
+<view class="Box" wx:if='{{!resetAddress}}'>
+    <picker-view class="addAddress">
+        <view>收 件 人:</view>
+        <input class="input"  bindchange="takeUser"/>
+    </picker-view> 
+    <picker-view class="addAddress">
+        <view>手机号码:</view>
+        <input class="input"  type="number" bindchange="takePhoneNumber"/>
+    </picker-view> 
+    <picker class="addAddress" bindchange="bindPickerChange" value="{{index}}" range="{{provincial}}">
+        <view>
+            省：<view class="picker" >{{provincial[index]}}</view>
+            <view class="picker" bindtap="hiddenThis" hidden="{{modal}}" style="background:white;width:200px;">请选择</view>
+        </view>
+    </picker>
+    <picker class="addAddress" bindchange="bindPickerChangeCity" value="{{indexCity}}" range="{{city}}">
+        <view>
+            市：<view class="picker">{{city[indexCity]}}</view>
+            <view class="picker" bindtap="hiddenThis" hidden="{{modal1}}" style="background:white;width:200px;">请选择</view>
+        </view>
+    </picker>
+    <picker class="addAddress" bindchange="bindPickerChangeCounty" value="{{indexCounty}}" range="{{county}}">
+    <view>
+        区/县：<view class="picker">{{county[indexCounty]}}</view>
+        <view class="picker" bindtap="hiddenThis" hidden="{{modal2}}" style="background:white;width:200px;">请选择</view>
+    </view>
+    </picker>
+    <picker-view class="addAddress" style="border:none;">
+        <view>详细地址:</view>
+        <input class="input" bindchange="takePlaceInfo"/>
+    </picker-view> 
+    <view style="height:30rpx;background:#f2f2f2;"></view>
+    <picker-view class="addAddress" style="position:relative;border:none">
+        <view>设为默认地址</view>
+        <switch type="switch" color="#ff2e6b" checked="true" bindchange="choseDefult" style="position:absolute;right:0rpx;"/>
+    </picker-view> 
+    <view style="height:30rpx;background:#f2f2f2;"></view>
+    <view class="save" bindtap="checkNull">
+        <text>保存并使用</text>
+    </view>
+</view>
+
+
+<view class="Box" wx:else>
+    <picker-view class="addAddress">
+        <view>收 件 人:</view>
+        <input class="input"  bindchange="takeUser" value="{{userName}}"/>
+    </picker-view> 
+    <picker-view class="addAddress">
+        <view>手机号码:</view>
+        <input class="input"  type="number" bindchange="takePhoneNumber" value="{{phoneNumber}}"/>
+    </picker-view> 
+
+        <picker class="addAddress" bindchange="bindPickerChange" value="{{index}}" range="{{provincial}}"  wx:if="{{!changePlace}}">
+            <view>
+                省：<view class="picker" >{{provincial[index]}}</view>
+                <view class="picker" bindtap="hiddenThis" hidden="{{modal}}" style="background:white;width:200px;">请选择</view>
+            </view>
+        </picker>
+
+        <picker class="addAddress" bindchange="bindPickerChange" value="{{index}}" range="{{provincial}}"  wx:else>
+            <view>
+                地区：<view class="picker" >{{provincial[index]}}</view>
+                <view class="picker" bindtap="hiddenThis" hidden="{{modal}}" style="background:white;width:200px;">{{longPlace}}</view>
+            </view>
+        </picker>
+
+    <view wx:if="{{!changePlace}}">
+        <picker class="addAddress" bindchange="bindPickerChangeCity" value="{{indexCity}}" range="{{city}}">
+            <view>
+                市：<view class="picker">{{city[indexCity]}}</view>
+                <view class="picker" bindtap="hiddenThis" hidden="{{modal1}}" style="background:white;width:200px;">请选择</view>
+            </view>
+        </picker>
+
+        <picker class="addAddress" bindchange="bindPickerChangeCounty" value="{{indexCounty}}" range="{{county}}">
+        <view>
+            区/县：<view class="picker">{{county[indexCounty]}}</view>
+            <view class="picker" bindtap="hiddenThis" hidden="{{modal2}}" style="background:white;width:200px;">请选择</view>
+        </view>
+        </picker>
+    </view>
+
+    <picker-view class="addAddress" style="border:none;">
+        <view>详细地址:</view>
+        <input class="input" bindchange="takePlaceInfo" value="{{placeInfo}}"/>
+    </picker-view> 
+    <view style="height:30rpx;background:#f2f2f2;"></view>
+    <picker-view class="addAddress" style="position:relative;border:none">
+        <view>设为默认地址</view>
+        <switch type="switch" color="#ff2e6b" checked="true" bindchange="choseDefult" style="position:absolute;right:0rpx;"/>
+    </picker-view> 
+    <view style="height:30rpx;background:#f2f2f2;"></view>
+    <view class="save" bindtap="checkNull" data-save="save">
+        <text>保存并使用</text>
+    </view>
+    <view class="save" bindtap="delAddress" style="background:#000;">
+        <text>删除地址</text>
+    </view>
+</view>

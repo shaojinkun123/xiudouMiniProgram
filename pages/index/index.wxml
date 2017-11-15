@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view hidden="{{upper}}" style="text-align:center;height:100rpx;">
+    <image src="../../images/upperLoad.gif" class="img1" style="height:60rpx;width:60rpx;"></image>
+</view> 
+<scroll-view class='mesBox' scroll-y="true" lower-threshold='50rpx' upper-threshold="-2px" bindscrolltolower="loadMore" style="height:{{sysHeight}}" bindscrolltoupper="{{resetIndex}}" scroll-top="{{scroll}}" bindscrolltoupper="upperLoad">
+    <navigator url="../search/search" style="height:50px;width:15%;position:fixed;z-index:999;margin-left:85%;"><image src="../../images/searchbai.png" class='search'></image></navigator>
+         <!-- <web-view src="https://m.xiudou.net/">sdfasdf</web-view>  -->
+
+    <!--<image src="{{recommend.recommend_images}}" mode="widthFix" style="width:100%" bindtap="toElse"></image>-->
+    <view class="firstInfo" style="width:{{sysWidth}};height:{{sysWidth}};max-height:730rpx;background:url({{item.image}}) no-repeat 50% 50%;background-size:cover;" wx:for="{{indexMes}}">
+        <navigator class="indexTextMes" url="../product/product?shopId={{item.video_id}}" data-shopId="{{item.recommend_id}}" wx:if="{{item.type == 1}}">
+            <!--<view>-->
+            <!--</view>-->
+            <view style="font-size:40rpx;line-height: 1.2;max-height:194rpx;overflow:hidden;position:absolute;bottom:100rpx;left:40rpx;right:40rpx;">                
+                <view class="price" wx:if="{{item.price}}">￥{{item.price}}</view> 
+                    <view>{{item.video_title}}</view>
+                </view>
+            <view style="font-size:22rpx;position:absolute;bottom:40rpx;left:40rpx;">{{item.video_duriation}}<text style="display:inline-block;margin:0rpx 20rpx">/</text>播放{{item.video_play_count}}</view>
+        </navigator>
+        <navigator class="indexTextMes" url="../normal/normal?shopId={{item.video_id}}"  data-shopId="{{item.recommend_id}}" wx:if="{{item.type == 2}}">
+            <view>
+                <picker-view class="price" wx:if="{{item.price}}">￥{{item.price}}</picker-view> 
+            </view>
+            <view style="font-size:40rpx;line-height: 1.2;max-height:94rpx;overflow:hidden;position:absolute;bottom:100rpx;left:40rpx;right:40rpx;">{{item.video_title}}</view>
+            <view style="font-size:22rpx;position:absolute;bottom:40rpx;left:40rpx;">{{item.video_duriation}}<text style="display:inline-block;margin:0rpx 20rpx">/</text>播放{{item.video_play_count}}</view>
+        </navigator>
+    </view>
+    <view hidden="{{hidden}}" style="text-align:center;height:100rpx;">
+        <image src="../../images/jiazai2.gif" style="height:60rpx;width:60rpx;"></image>
+    </view>   
+    <view hidden="{{endImg}}" style="text-align:center;height:140rpx;">
+        <image src="../../images/endImg.png" style="width:{{sysWidth}};height:100%"></image>
+    </view> 
+</scroll-view>

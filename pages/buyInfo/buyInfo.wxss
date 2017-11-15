@@ -1,0 +1,107 @@
+.Box{
+    padding: 30rpx;
+}
+.addressBox{
+    position: relative;
+    height: 140rpx;
+    border: 1px solid #666;
+    width: 100%;
+    line-height: 140rpx;
+    font-size: 25rpx;
+    display: flex;  
+}
+.addressArrow,.arrowRight{
+    height: 30rpx;
+    width: 30rpx;
+    margin-top: 55rpx;
+    margin-left: 20rpx;
+}
+.arrowRight{
+   position: absolute;
+   right: 20rpx;
+}
+.huabian{
+    height: 6rpx;
+    width: 100%;
+    position: absolute;
+    bottom: 0rpx;
+    left: 0rpx;
+}
+.shopList{
+    width: 100%;
+    margin-top: 30rpx;
+    border: 1rpx solid #000;
+}
+.shoper{
+    height: 90rpx;
+    margin: 0rpx 20rpx;
+    border-bottom: 1rpx solid #b2b2b2;
+}
+.avatarSmall{
+    margin: 15rpx;
+}
+.nikeName{
+    line-height: 90rpx;
+    font-size: 25rpx;
+}
+.productS{
+    margin: 20rpx;
+    font-size: 25rpx;
+    border-bottom: 1rpx solide #d2d2d2;
+}
+.productSbox{
+    margin:0rpx 20rpx;
+    position:relative;
+    width:72%;
+}
+.spickPrice{
+    font-size: 25rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    margin: 0rpx 20rpx;
+}
+.grayArrow{
+    height: 20rpx;
+    width: 10rpx;
+    position: absolute;
+    top: 35rpx;
+    right: 20rpx;
+}
+.voucher{
+    margin-top: 30rpx;
+    position: relative;
+    font-size: 25rpx;
+    font-weight: 800;
+    height: 90rpx;
+    line-height: 90rpx;
+    width:100%;
+    border:1rpx solid #000;
+}
+.pay{
+    position: fixed;
+    bottom:0rpx;
+    height: 120rpx;
+    width: 100%;
+    background: #f1f1f1;
+    left: 0rpx;
+    z-index:999;
+}
+.payButton{
+     width:30%;
+     position:absolute;
+     right:0rpx;
+     background:#ff2e6b;
+     color:white;
+     height: 120rpx;
+     line-height: 120rpx;
+     text-align: center;
+     top: 0rpx;
+}
+.userAddress{
+    width: 90%;
+    position: absolute;
+    top: 20rpx;
+    left: 30rpx;
+    line-height: 70rpx;
+    font-size: 30rpx;
+}

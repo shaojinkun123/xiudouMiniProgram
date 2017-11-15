@@ -1,0 +1,103 @@
+<!--buyInfo.wxml-->
+<view class="Box" style="padding-bottom:150rpx;">
+    <!--如果没有地址-->
+    <navigator  url="../addressList/addressList" class="addressBox" wx:if="{{indexMes.reserver_info == 0}}">
+        <image src="../../images/addressArrow.png" class="addressArrow"></image>
+        <view>收货地址</view>
+        <image src="../../images/arrowRight.png" class="arrowRight"></image>
+        <image src="../../images/dizhihuabian.png" class="huabian"></image>
+     </navigator> 
+
+    <!--如果选择了地址 显示选择的地址-->
+    <!--<navigator  url="../addressList/addressList" class="addressBox" wx:elif="{{choseName && !defalutAddress && !shopCar && indexMes.reserver_info != 0}}">
+        <view class="userAddress">!{{choseName}} {{chosePhone}}</view>
+        <view class="userAddress oneLine" style="line-height:140rpx;">{{choseLocation}} {{chosePlace}}</view>
+        <image src="../../images/arrowRight.png" class="arrowRight"></image>
+        <image src="../../images/dizhihuabian.png" class="huabian"></image>
+    </navigator> -->
+
+    <!--如果购物车选择了地址 显示选择的地址-->
+    <!--<navigator  url="../addressList/addressList?type=shopCar" class="addressBox" wx:if="{{choseName && shopCar && indexMes.reserver_info != 0}}">
+        <view class="userAddress">!!{{choseName}} {{chosePhone}}</view>
+        <view class="userAddress oneLine" style="line-height:140rpx;">{{choseLocation}} {{chosePlace}}</view>
+        <image src="../../images/arrowRight.png" class="arrowRight"></image>
+        <image src="../../images/dizhihuabian.png" class="huabian"></image>
+    </navigator> -->
+
+
+
+     <!--如果没有选择地址   显示默认地址-->
+    <navigator  url="../addressList/addressList" class="addressBox" open-type="redirect" wx:elif="{{indexMes.reserver_info != 0 && !shopCar}}">
+        <view class="userAddress">{{indexMes.reserver_info.name}} {{indexMes.reserver_info.phone_number}}</view>
+        <view class="userAddress oneLine" style="line-height:140rpx;">{{indexMes.reserver_info.location}}{{indexMes.reserver_info.address}}</view>
+        <image src="../../images/arrowRight.png" class="arrowRight"></image>
+        <image src="../../images/dizhihuabian.png" class="huabian"></image>
+    </navigator> 
+
+
+     <!--如果是购物车转过来的   显示默认地址-->
+    <navigator  url="../addressList/addressList?type=shopCar" class="addressBox"  open-type="redirect" wx:if="{{shopCar && indexMes.reserver_info != 0}}">
+        <view class="userAddress">{{indexMes.reserver_info.name}} {{indexMes.reserver_info.phone_number}}</view>
+        <view class="userAddress oneLine" style="line-height:140rpx;">{{indexMes.reserver_info.location}}{{indexMes.reserver_info.address}}</view>
+        <image src="../../images/arrowRight.png" class="arrowRight"></image>
+        <image src="../../images/dizhihuabian.png" class="huabian"></image>
+    </navigator> 
+
+    
+
+
+
+
+    <view class="shopList" wx:for="{{indexMes.list}}">
+        <picker-view class="shoper">
+            <image src="{{item.user.avatar}}" class="avatarSmall" style="margin-left:0rpx;"></image>
+            <view class="oneLine nikeName">{{item.user.nick_name}}</view>
+        </picker-view>
+        <view  wx:for="{{item.user.product}}">
+            <picker-view class="productS">
+                <image src="{{item.product_image}}" style="height:140rpx;width:140rpx"></image>
+                <view class="productSbox">
+                    <view class="oneLine">{{item.product_name}}</view>
+                    <view style="margin-top:35rpx;">规格：{{item.product_type}}</view>
+                    <view style="margin-top:6rpx;">价格：{{item.product_price}}</view>
+                    <view style="position:absolute;bottom:0rpx;right:-11rpx;">× {{item.product_count}}</view>
+                </view>
+            </picker-view>
+        </view>
+    
+        <picker-view   class="spickPrice">
+            <view style="width:100%;border-top:1px solid #d2d2d2;border-bottom:1px solid #d2d2d2;">
+                <view>运费</view>
+                <view style="position:absolute;right:0rpx;top:5rpx">￥{{item.user.shop_delivery_charge}}</view>
+            </view>
+        </picker-view> 
+
+        <picker-view class="spickPrice">
+                <view style="width:80rpx;">留言：</view><textarea style="height:90rpx;width:280px" bindconfirm="takeRemark"></textarea>
+        </picker-view>
+
+        <view class="spickPrice clearfix" style="border-top:1px solid #d2d2d2;">
+            <view style="float:right">共{{item.user.shop_total_count}}件商品 总计：￥<text style="color:#ff2e6b">{{item.user.shop_total_price + item.user.shop_delivery_charge}}</text></view>
+        </view>
+
+        <picker-view class="pay">
+            <view style="font-size:30rpx;margin-top:30rpx;margin-left:20rpx;height:120rpx;">
+                <text wx:if="{{useVoucher == 0}}">实付金额：￥{{indexMes.total_price + indexMes.total_delivery_charge}}</text>
+                <text wx:else>实付金额：￥{{actuallyPrice}}</text>
+                    <view style="color:#d2d2d2;font-size:20rpx;margin-top:10rpx;">
+                        <text>含邮费</text>
+                    </view>
+            </view>
+            <view class="payButton" bindtap="wechatPay">
+                <text>付款</text>
+            </view>
+        </picker-view>
+    </view>
+    
+    <view class="voucher"  wx:if="{{indexMes.vouchers != ''}}" bindtap="showVoucher">
+        <view style="margin-left:20rpx;">
+            <text>{{voucher}}</text><image src="../../images/grayArrow.png" class="grayArrow"></image>
+        </view>
+    </view>
+
+</view>

@@ -1,0 +1,244 @@
+<!--toubutab-->
+<picker-view class="topTab">
+    <view class='oneTab' wx:if="{{productMes.buyer_show_total == 0}}">商品详情</view>
+    <view class="{{selected?'tab':'tab1'}}" bindtap="selected"  wx:if="{{productMes.buyer_show_total != 0}}">商品详情</view>
+    <view class="{{selected1?'tab':'tab1'}}" bindtap="selected1" wx:if="{{productMes.buyer_show_total != 0}}">买家秀 {{productMes.buyer_show_total}}</view>
+</picker-view>
+
+<!--买家秀弹出的video-->
+<view class="dialog" hidden="{{dialog}}" style="height:{{sysHeight}}px;width:{{sysWidth}}px">
+    <image src="../../images/close.png" class="closeImg" bindtap="closeDialog"></image>
+    <video src="{{videoUrl}}" id="productVideos" class="dialogVideo" autoplay="{{autoplay}}" hidden="{{videoHide}}"></video>
+</view>
+<!--产品弹出的video-->
+<view class="dialog" hidden="{{dialog1}}" style="height:{{sysHeight}}px;width:{{susWidth}}px">
+        <image src="../../images/close.png" style="height:120px;width:80px;margin-left:80%;" bindtap="close"></image>
+        <video src="{{productMes.product_video_stream}}" id="productVideo" autoplay="{{autoplay}}" style="width:{{sysWidth}}px;margin-top:{{sysWidth/6}}px" bindplay="playCountAdd"></video>
+</view>
+<!--弹出的轮播图-->
+<swiper indicator-dots="{{true}}" autoplay="{{autoplay}}" interval="{{2200}}" duration="{{400}}" hidden="{{imgsHide}}" class="showerSwiper"
+style="height:50%;width:{{sysWidth}}px" current="{{index - 1}}">
+    <block wx:for="{{imgsUrl}}">
+    <swiper-item>
+        <image src="{{item}}" class="slide-image" style="width:{{sysWidth}}px;" mode="aspectFit"/>
+    </swiper-item>
+    </block>
+</swiper>
+
+
+<!--商品详情-->
+<view class="{{selected?'show':'hidden'}}" style="padding-bottom:100rpx;">
+    <!--<video src="{{productMes.product_video_stream}}" style="width:{{sysWidth}};height:750rpx;"></video>-->
+    <view style="background:url({{productMes.header_image}}) 50% 50% no-repeat;width:{{sysWidth}}px;height:{{sysWidth}}px"></view>
+    <image src="../../images/bofang.png" class="play" bindtap="playProduct" style="position:absolute;top:{{sysWidth/2}}px;height:180rpx;width:180rpx;left:{{sysWidth/2-45}}px"></image>
+    <view>
+        <view class="proName">{{productMes.product_name}}</view>
+        <view class="proPrice" wx:if="{{productMes.spike_delivery_price > 0}}">{{productMes.min_price}} <text> {{productMes.spike_delivery_price}} </text></view>
+        <view class="proPrice" wx:else>￥{{productMes.min_price}} <text wx:if="{{product_delivery_price == 0}}">包邮</text></view>
+        <view class="proText">{{productMes.product_description}}</view>
+        <view style="padding:30rpx 40rpx;padding-top:0rpx;" wx:if="{{productMes.topics}}">
+            <navigator url="../topic/topic?topic={{item}}" class="topic" wx:for="{{productMes.topics}}" open-type="redirect">#{{item}}</navigator> 
+        </view>
+        <view class="playCount">播放{{productMes.video_play_count}}</view>
+        <view class="proUser">
+            <image src="{{productMes.user.avatar}}" class="avatar"></image>
+            <image src="../../images/daren.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_celebrity_vip == 1}}"></image>
+            <image src="../../images/geren.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_vip == 1}}"></image>
+            <image src="../../images/guanfang.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_official_vip == 1}}"></image>
+            <view class="shopInfo">
+                <view>
+                    <text style="font-size:28rpx;color:#333" class="oneLine">{{productMes.user.nick_name}}</text>
+                </view>
+                <view>
+                    <text style="font-size:20rpx;color:#808080;">粉丝 {{productMes.user.fans_count}} | 关注{{productMes.user.friend_shop_count}}</text>
+                </view>
+                <picker-view bindtap="showIconMes">
+                    <image src="../../images/qitian1.png" class="shoperIcon" wx:if="{{productMes.user.shop_agreement.length > 0}}"></image>
+                    <!--<image src="../../images/yongjin1.png" class="shoperIcon" wx:if="{{productMes.forward_charge > 0}}"></image>-->
+                    <image src="../../images/quan1.png" class="shoperIcon" wx:if="{{productMes.shop_coupon !=0}}"></image>
+                </picker-view>                 
+            </view>
+            <image src="../../images/faved.png" class="faved" bindtap="faved" hidden="{{faved}}"></image>
+            <image src="../../images/hasfaved.png" class="faved" bindtap="hasfaved" hidden="{{hasFaved}}"></image>        
+        </view>
+        <view wx:for="{{productMes.product_image}}">
+            <image src="{{item.image}}" style='width:{{sysWidth}}px' mode="widthFix"></image>
+        </view>
+    </view>
+
+<!--购买流程-->
+    <picker-view class="buy" hidden="{{cantBuySelf}}">
+        <view class="shopCar" bindtap="openSpec" data-shopCar="shopCar">加入购物车</view>
+        <view class="buyNow" bindtap="openSpec"  wx:if="{{!buyShowButton}}">立即购买</view>
+        <view class="buyNow" bindtap="openSpec"  wx:else style="background:#ddd;">已售完</view>
+    </picker-view>
+    <view style="height:{{sysHeight}}px;width:{{sysWidth}}px;background:rgba(0,0,0,.3);position:fixed;top:0rpx;"  hidden="{{specHidden}}">
+        <view class="spec" >
+            <picker-view class="productMessage">
+                <image src="{{productMes.header_image}}" class="minProdcutImg"></image>
+                <view style="font-size:24rpx;line-height:1.5;margin-left:30rpx;">
+                    <view class="oneLine" style="width:480rpx;">{{productMes.product_name}}</view>
+                    <view style="color:#666">库存{{productMes.product_type[specNum].stock}}件 
+                        
+                        <text wx:if="{{productMes.product_delivery_price}}"> 邮费:￥{{productMes.product_delivery_price}}</text>
+                        <text wx:else> 邮费:￥0.00</text>
+
+                    </view>
+                    <view style="color:#ff2e6b;font-size:30rpx;margin-top:15rpx">￥{{productMes.product_type[specNum].type_price}}</view>
+                    <image src="../../images/productCha.png" class="close" bindtap="closeSpec"></image>
+                </view>
+            </picker-view>
+            <view style="height:80rpx;line-height:80rpx;" >
+                <view >规格：{{productMes.product_type[specNum].type_name}}</view>
+                <scroll-view style="width:100%;height:260rpx;border-bottom:1rpx solid #ddd" scroll-y="true" class="clearfix">
+                    <picker-view wx:for="{{productMes.product_type}}" style="float:left;">
+                        <view class="specS aaa" bindtap="choseThis" data-id="{{item.type_id}}"  wx:if="{{item.type_id==choseId}}">{{item.type_name}}</view>
+                        <view class="specS" bindtap="choseThis" data-id="{{item.type_id}}"  wx:if="{{item.type_id!=choseId}}">{{item.type_name}}</view>
+                    </picker-view>
+                  
+                </scroll-view> 
+            </view>
+            <view style="height:80rpx;line-height:80rpx;margin-top:260rpx;">
+                <view >数量</view>
+                <picker-view style="width:100%;height:120rpx" scroll-y="true">
+                    <image class="add" bindtap="reduceShopNum" wx:if="{{shopNum > 1}}" src="../../images/canDel.png"/>
+                    <image class="add" src="../../images/del.png" wx:else/>
+                    <input type="number" value="{{shopNum}}" class="shopNum" disabled="true"/>
+                    <image class="add" bindtap="plusShopNum" wx:if="{{shopNum < productMes.product_type[specNum].stock}}" src="../../images/canAdd.png"/>
+                    <image class="add" src="../../images/add.png" wx:else/>
+                </picker-view> 
+                <button disabled="{{Bdisabled}}" class="nextGo" bindtap="goBuyInfo" data-buyInfo='{{productMes}}' wx:if="{{shopCar && productMes.product_type[specNum].stock != 0}}">
+                    下一步
+                </button>
+                <view class="nextGo" style="background:#ddd;color:white" wx:elif="{{productMes.product_type[specNum].stock == 0}}">
+                    已售完
+                </view>
+                <view class="nextGo"  bindtap="addShopCar" data-buyInfo='{{productMes}}' wx:else>
+                    确定
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!--评论详情-->
+<scroll-view class="{{selected1?'show':'hidden'}}" scroll-y="true" lower-threshold='50px' bindscrolltolower="loadMore" style="height:{{sysHeight}}px;width:{{sysWidth}}px;">
+<view wx:for="{{buyersShowList}}" class="BuyerShowBox">
+    <picker-view clss="BuyerShowBoxUser">
+        <image src="{{item.user.avatar}}" class="avatarSmall"></image>
+        <view class='showerName'>
+            <view wx:if="{{item.user.nick_name}}">{{item.user.nick_name}}</view>
+            <view wx:else>秀兜用户</view>
+            <view wx:if="{{item.city!=''}}" class="showCity">{{item.city}}</view>
+            <view wx:else-if="{{item.city==''}}" class="showCity">秀兜网友</view>
+        </view>
+    </picker-view>
+    <view class="buyerText">
+        <view class="comment">{{item.product_show_comment}}</view>
+        <view class="Bprice">规格：{{item.product_type}} 价格：￥{{item.product_price}}</view>
+
+        <view wx:if="{{item.product_show_head_image && item.product_image_list != ''}}" class="clearfix" data-imgs="{{item.product_image_list}}" data-num="{{item.product_image_list.length}}" bindtap="bindImgs">
+            <image src="{{item.product_show_head_image}}" class="userShowImgs" style='background:url(../../images/001.jpg);background-size:cover;1rpx solid #d2d2d2'></image>
+            <image src="../../images/bofang.png" class="playImg"  data-videoUrl="{{item.product_show_url}}" bindtap='playVideo'></image>
+            <view wx:for="{{item.product_image_list}}">
+                <view style="background:url({{item}}) no-repeat;background-size:cover;" class="userShowImgs" bindtap="showSwiper" data-index="{{index}}"></view>
+            </view>
+        </view>
+        
+        <view wx:if="{{item.product_show_head_image && item.product_image_list == ''}}" class="clearfix">
+            <image src="{{item.product_show_head_image}}" class="userShowImgs"></image>
+            <image src="../../images/bofang.png" class="playImg" data-videoUrl="{{item.product_show_url}}" bindtap='playVideo'></image>
+        </view>
+
+        <view wx:if="{{!item.product_show_head_image &&item.product_image_list !=''}}" class="clearfix" data-imgs="{{item.product_image_list}}" data-num="{{item.product_image_list.length}}" bindtap="bindImgs">
+            <view wx:for="{{item.product_image_list}}">
+                <view style="background:url({{item}}) no-repeat;background-size:cover;" class="userShowImgs" data-index="{{index}}" bindtap="showSwiper"></view>
+            </view>                      
+        </view>
+    </view>
+</view>
+<view hidden="{{hidden}}" style="text-align:center;height:100rpx;">
+    <image src="../../images/jiazai2.gif" style="height:60rpx;width:60rpx;"></image>
+</view>   
+<view hidden="{{endImg}}" style="text-align:center;height:140rpx;margin-top:-30rpx">
+    <image src="../../images/endImg.png" style="width:{{sysWidth}}px;height:100%"></image>
+</view>            
+</scroll-view> 
+
+<view class="model" style="height:{{sysHeight}}px;width:{{sysWidth}}px" hidden="{{model}}" bindtap="closeModel"> 
+    <view class="bottomSlider">
+        <view class="flex sliderEle" wx:if="{{productMes.user.certification.if_vip == 1}}">
+            <image src="../../images/geren.png" class="sliderImg"></image>
+            <view>
+                <view class="sliderTitle">
+                    个人认证
+                </view>
+                <view class="sliderText">
+                    身份证已经被验证，具有安全保障。
+                </view>
+            </view>
+        </view>
+
+        <view class="flex sliderEle" wx:elif="{{productMes.user.certification.if_celebrity_vip == 1}}">
+            <image src="../../images/daren.png" class="sliderImg"></image>
+            <view>
+                <view class="sliderTitle">
+                    达人认证
+                </view>
+                <view class="sliderText">
+                    身份证已经被验证，具有安全保障
+                </view>
+            </view>
+        </view>
+
+        <view class="flex sliderEle" wx:elif="{{productMes.user.certification.if_official_vip == 1}}">
+            <image src="../../images/guanfang.png" class="sliderImg"></image>
+            <view>
+                <view class="sliderTitle">
+                    官方认证
+                </view>
+                <view class="sliderText">
+                    这是经过验证的官方账号
+                </view>
+            </view>
+        </view>
+        
+        <view class="flex sliderEle" wx:if="{{productMes.user.shop_agreement.length > 0}}">
+            <image src="../../images/qitian1.png" class="sliderImg"></image>
+            <view>
+                <view class="sliderTitle">
+                    七天认证
+                </view>
+                <view class="sliderText">
+                    这家店增加了7天的退货期哦。
+                </view>
+            </view>
+        </view>
+<!--分佣功能-->
+        <!--<view class="flex sliderEle" wx:if="{{productMes.forward_charge > 0}}">
+            <image src="../../images/yongjin1.png" class="sliderImg"></image>
+            <view>
+                <view class="sliderTitle">
+                    分销得佣金
+                </view>
+                <view class="sliderText">
+                    该商品佣金金额为<text style="color:#ff2e6b">￥{{shareMoney}}</text>
+                </view>
+            </view>
+        </view>-->
+
+        <view class="flex sliderEle" wx:if="{{productMes.shop_coupon !=0}}">
+            <image src="../../images/quan1.png" class="sliderImg"></image>
+            <view>
+                <view class="sliderTitle">
+                    店铺优惠券
+                </view>
+                <view class="sliderText">
+                    这家店有可以领取的优惠券，<navigator url="../voucher/voucher?userId={{productMes.user.user_id}}" style="color:#ff2e6b;display:inline">去领取</navigator> 
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+

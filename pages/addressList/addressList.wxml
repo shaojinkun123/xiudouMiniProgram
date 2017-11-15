@@ -1,0 +1,18 @@
+<!--addressList.wxml-->
+<view class="Box">
+    <radio-group class="radio-group" bindchange="radioChange">
+    <view>
+        <label class="addressBoxList" wx:for="{{indexMes.list}}" data-address='{{indexMes.list[index]}}' bindtap="showAddress">
+        <radio value="{{item.id}}" color='#ff2e6b' checked='checked' wx:if='{{addressId == item.id}}'/>{{item.value}}
+        <radio value="{{item.id}}" color='#ff2e6b' wx:if="{{addressId != item.id}}"/>{{item.value}}                            
+        <view class="address">{{item.name}} <text class="phoneNumber">{{item.phone_number}}</text></view>
+        <view class="address" style="margin-top:30rpx;"><text class="isDefault" wx:if="{{item.is_default == 1}}">默认</text>{{item.location}}<text>{{item.address}}</text></view>
+        <view class="reSet" catchtap="reSetAddress" data-address='{{indexMes.list[index]}}' data-longPlace="{{item.location}}">
+            <image src="../../images/reSet.png" class="chose"></image>
+        </view>
+        </label>
+    </view>
+    </radio-group>
+    <navigator url="../addAddress/addAddress" class="addAddress"  open-type="redirect" wx:if="{{!shopCar}}">添加新地址</navigator>
+    <navigator url="../addAddress/addAddress?type=shopCar" open-type="redirect" class="addAddress"  wx:else>添加新地址</navigator>      
+</view>

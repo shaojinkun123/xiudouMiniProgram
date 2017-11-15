@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<scroll-view class='mesBox' scroll-y="true" lower-threshold='10rpx' bindscrolltolower="loadMore" style="height:{{sysHeight}}">
+    <image src="{{headImage}}" mode="widthFix" style="width:100%"></image>
+    <view class="headTitle">{{headTitle}}</view>
+    <view class="firstInfo" style="width:{{sysWidth}};height:{{sysWidth}};max-height:730rpx;background:url({{item.header_image || item.head_image}}) no-repeat 50% 50%" wx:for="{{indexMes}}">
+    <navigator class="mesDialog" open-type="redirect" url="../product/product?shopId={{item.product_id}}" wx:if="{{item.type == 1}}"></navigator>
+    <navigator class="mesDialog" open-type="redirect" url="../normal/normal?shopId={{item.normal_video_id}}" wx:if="{{item.type == 2}}"></navigator>
+    <view class="indexTextMes">
+        <view>
+            <picker-view class="price" wx:if="{{item.min_price}}">￥{{item.min_price}}</picker-view> 
+        </view>
+        <view style="margin-bottom:20rpx;font-size:40rpx;line-height: 1.2;">{{item.video_name}}</view>
+        <view style="font-size:22rpx;">  {{item.play_time}} / 播放{{item.video_play_count}}</view>
+    </view>
+    </view>
+    <view hidden="{{hidden}}" style="text-align:center;height:100rpx;">
+        <image src="../../images/jiazai2.gif" style="height:60rpx;width:60rpx;"></image>
+    </view>   
+    <view hidden="{{endImg}}" style="text-align:center;height:140rpx;">
+        <image src="../../images/endImg.png" style="width:{{sysWidth}};height:100%"></image>
+    </view> 
+</scroll-view>

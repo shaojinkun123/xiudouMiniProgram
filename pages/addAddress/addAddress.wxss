@@ -1,0 +1,31 @@
+
+.addAddress{
+    position: relative;
+    margin: 0rpx 30rpx;
+    border-bottom: 1rpx solid #b2b2b2;
+    font-size: 30rpx;
+    height: 120rpx;
+    line-height: 120rpx;
+}
+.input{
+    width: 80%;
+    margin-top: 35rpx;
+}
+.save{
+    text-align: center;
+    color: white;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: #ff2e6b;
+    margin: 0rpx 30rpx;
+    margin-top: 30rpx;
+}
+.picker{
+    position: absolute;
+    left: 130rpx;
+    top: 0rpx;
+    height : 99%;
+}
+
+
+

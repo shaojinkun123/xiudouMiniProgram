@@ -1,0 +1,76 @@
+<!--pages/login/login.wxml-->
+<view class="login" style="height:{{sysHeight}};width:{{sysWidth}}">
+  <view class="header" hidden="{{header}}">
+    <text id="loginbtuTxtChosen" style="margin-left:20rpx;" class='{{login?"loginBorder":"login"}}' catchtap="toLogin">登陆</text>
+    <text id="signupbtu" class='{{!login?"loginBorder":"login"}}' catchtap="toRegister">注册</text>
+  </view>
+  <!--登陆模块-->
+  <view class="loginView" hidden="{{!login}}">
+    <view hidden="{{loginFirstView}}">
+      <input id="userName" type='number' placeholder="请输入注册手机号" bindinput='checkUserPhone'/>
+      <view class="switch">
+        <input id="password" placeholder="请输入登陆密码" password='{{isPassWord}}' bindinput='checkUserPassWord'/>
+        <switch checked bindchange="switch1Change" color="#ff2e6b" />
+      </view>
+	  <view style="display:flex;">
+		<view class="errMes" style="flex:2;line-height:120rpx;">{{loginErrMes}}</view>
+		<view id="forgetPassWord" catchtap="toForgetPassWord">忘记密码</view>
+	  </view>
+      <view class="clearfix"></view>
+      <button catchtap="loginIn">登录</button>
+      <view class="thirdLogin">
+        <view>微信登陆</view>
+        <image src="../../images/H5_weixin@2x.png" catchtap="toLoginFail"></image>
+      </view>
+    </view>
+    <!--忘记密码一级模块-->
+    <view class="forgetPassWord" hidden="{{forgetPassWord}}">
+      <view class="header">
+        <text id="loginbtuTxtChosen">找回密码</text>
+      </view>
+      <input id="forgetPhoneNumber" type='number' placeholder="请输入注册手机号" bindinput="checkPhoneNumber"/>
+      <button catchtap="toNextPassword" style="margin-top:40rpx;">下一步</button>
+    </view>
+    <!--忘记密码二级模块-->
+    <view class="forgetPassWordChild" hidden="{{nextPassWord}}">
+      <view class="header">
+        <text id="loginbtuTxtChosen">修改密码</text>
+      </view>
+      <view class="telephone">{{checkPhoneNumber}}</view>
+      <view style="position:relative">
+        <input id="VerificationCode" placeholder="验证码" bindinput="storageVCode"/>
+        <button class="VerificationCodeButton" catchtap="sendForgetVerificationCodeButton" disabled='{{isLoginCodeDesabled}}'>{{loginButtonText}}</button>
+      </view>
+      <input id="newPassWord" placeholder="设置新密码" bindinput="storageNewPassWord"/>
+      <button style="margin-top:80rpx;" catchtap="sendNewPassWord">提交</button>
+    </view>
+  </view>
+  <!--注册模块-->
+  <view class="registerView" hidden="{{login}}">
+  <view hidden="{{register}}">
+		<picker class="place" bindchange="bindPickerChange" value="{{index}}" range="{{placeShow}}">
+		<text>国家/地区:{{place}}</text>
+		<image src="../../images/grayArrow.png"></image>
+		</picker>
+		<view class="phoneNumber">
+		<text>{{SelectedplaceNumber}}</text>
+		<input type="number" placeholder="请输入注册手机号" bindinput="takeNewUserPhoneNumber"/>
+		</view>
+		<view class="xiudouAgreement">
+		<text>同意</text>
+		<navigator url="../xiudouAgrement/xiudouAgrement" open-type="navigate" style="color:#ff2e6b;">秀兜用户协议</navigator>
+		</view>
+		<button catchtap="generateNewUser">下一步</button>
+	</view>
+    <!--注册账号二级模块-->
+    <view class="registerChild" hidden="{{!register}}">
+      <view class="telephone">{{newUserPhoneNumber}}</view>
+      <view style="position:relative">
+        <input id="VerificationCode" placeholder="验证码" bindinput="storageVCode"/>
+        <button class="VerificationCodeButton" catchtap="generateNewUser" disabled='{{isLoginCodeDesabled}}'>{{loginButtonText}}</button>
+      </view>
+      <input id="newPassWord" placeholder="设置密码" bindinput="storageNewPassWord"/>
+      <button style="margin-top:80rpx;"  catchtap="MakeNewUser">提交</button>
+    </view>
+  </view>
+</view>

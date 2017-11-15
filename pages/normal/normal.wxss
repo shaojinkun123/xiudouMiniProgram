@@ -1,0 +1,63 @@
+@import "../product/product.wxss";
+.playCount{
+    margin-top: 30rpx;
+}
+.internalProducts{
+    margin: 0rpx 40rpx;
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 25rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+}
+.aboutImg{
+    height: 180rpx;
+    width: 260rpx; 
+}
+.aboutProduct{
+    padding: 30rpx 40rpx;
+}
+.aboutName{
+    font-size: 28rpx;
+    color: #333;
+    line-height: 1.2;
+    margin-left: 30rpx;
+}
+.aboutPrice{
+    color: #fff;
+    font-size: 35rpx;
+    margin-left: 30rpx;
+    background: #ff2e6b;
+    display: inline-block;
+    padding: 0rpx 10rpx;
+    margin-top: 100rpx;
+}
+.buyerText{
+    padding-bottom: 20rpx;
+    margin-right: 40rpx;
+}
+.zanBox{
+    position: absolute;
+    top: 0px;
+    right: 60px;
+}
+.zan{
+    height: 28rpx;
+    width: 30rpx;
+}
+.showerName{
+    width: 100%;
+}
+.dialog{
+    background: #000;
+    position: fixed;
+    top: -1rpx;
+    left: -1rpx;
+}
+.BuyerShowBox {
+    margin:30rpx 0rpx 30rpx 0rpx;
+    width:100%;
+}
+.richText{
+  padding: 20rpx 40rpx;
+}

@@ -1,0 +1,61 @@
+/*@import "../../app.wxss";*/
+.Box{
+    padding: 30rpx;
+}
+.addressBoxList{
+    position: relative;
+    padding: 30rpx 20rpx;
+    border:1rpx solid black;
+    margin-bottom: 30rpx;
+    font-size: 25rpx;
+    display: block;
+}
+.phoneNumber{
+    display: inline-block;
+    margin-left: 50rpx;
+}
+.address{
+    width: 80%;
+    margin-left: 10%;
+}
+.isDefault{
+    display: inline-block;
+    padding : 5rpx 10rpx;
+    background: #ff2e6b;
+    color: white;
+    margin-right: 20rpx;
+}
+.check{
+    height: 30rpx;
+    width: 30rpx;
+    position: absolute;
+    left: 20rpx;
+    top: 55rpx;
+}
+.chose{
+    margin-left: 20rpx; 
+    margin-top: 20rpx;
+    height: 30rpx;
+    width: 30rpx;
+}
+.addAddress{
+    text-align: center;
+    background: #ff2e6b;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #fff;
+    margin-top: 60rpx;
+}
+radio{
+    position: absolute;
+    top: 55rpx;
+}
+.reSet{
+    height: 70rpx;
+    width: 60rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 45rpx;
+    border-left: 1rpx solid #d2d2d2;
+    z-index: 99;
+}

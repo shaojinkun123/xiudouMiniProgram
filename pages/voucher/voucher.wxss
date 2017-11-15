@@ -1,0 +1,83 @@
+.exchange{
+    background: #f2f2f2;
+    height: 90rpx;
+}
+.exchangeText{
+    color: #ff2e6b;
+    text-align: center;
+    line-height: 90rpx;
+}
+.VoucherInput{
+    height: 60rpx;
+    margin: 15rpx;
+    background:white;
+    width:60%;
+}
+.circleS{
+    height: 60rpx;
+    width: 60rpx;
+    border-radius: 100%;
+    background: white;
+    margin-top: 15rpx;  
+}
+.left{
+    position: relative;
+    left: 50rpx;
+}
+.right{
+    position: relative;
+    right: 50rpx;
+}
+.Box{
+    padding: 30rpx;
+    padding-bottom: 0rpx;
+}
+.voucherBox{
+    border: 1rpx solid #f2f2f2;
+    position: relative;
+    height: 200rpx;
+    width: 100%;
+}
+.voucher{
+    width: 200rpx;
+    position: absolute;
+    top: 0rpx;
+    color: white;
+    text-align: center;
+}
+.voucherTitle{
+    width: 194rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 30rpx;
+    border-bottom: 1rpx dashed #fff;
+    background: rgba(0,0,0,.3)
+}
+.mesright{
+    color: #000;
+}
+.alert{
+    height: 320rpx;
+    width: 80%;
+    margin-left: 10%;
+    position: absolute;
+    top: 50%;
+    margin-top: -150rpx;
+    background: #ff2e6b;
+    text-align: center;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+.model{
+    background: rgba(0,0,0,.3);
+    position: fixed;
+    top: 0rpx;
+    width: 100%;
+    z-index: 99;
+    left: 0rpx;
+}
+.alertButton{
+    width: 50%;
+    color: white;
+    margin-top: 20rpx;
+}

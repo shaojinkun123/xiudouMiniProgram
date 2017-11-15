@@ -1,0 +1,47 @@
+<import src="/wxSearch/wxSearch.wxml" />
+<view class="wxSearch-section">
+  <view class="wxSearch-pancel">
+    <image src="../../images/search.png" class='searchIcon' style="position: absolute;top: 35rpx;"></image>
+    <input bindinput="wxSearchInput" bindconfirm="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" />
+    <view class="cancleBox" hidden="{{cancle}}" bindtap="cancle">
+      <image src="../../images/img_cancel.png" class='cancle'></image>
+    </view>
+    <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true" hidden="{{searchHidden}}">搜索</button>
+    <button class="wxSearch-button" bindtap="backToIndex" size="mini" plain="true" hidden="{{!searchHidden}}">取消</button>
+  </view>
+</view>
+<template is="wxSearch" data="{{wxSearchData}}" />
+<view class="tapList">
+  <view class="{{getTap?'selected':'select'}}" bindtap="selectVideo">视频</view>
+  <view class="{{!getTap?'selected':'select'}}" bindtap="selectTopic">话题</view>
+</view>
+<view class="topicBox" hidden='{{getTap}}'>
+    <navigator hidden='{{noTopic}}' url="../topic/topic?topic={{item.topic_name}}" class="wxSearchHistoryItem oneLine" wx:for="{{topicList}}" style="display:inline-block;width:auto;">#{{item.topic_name}}#</navigator> 
+    <image src="../../images/noContent.png" hidden="{{!noTopic}}" class="noContent"></image>
+</view>
+<view class="videoBox" hidden='{{!getTap}}'>
+  <view class="firstInfo" style="width:{{sysWidth}};height:{{sysWidth}};max-height:730rpx;background:url({{item.header_image || item.normal_video_head_image}}) no-repeat 50% 50%;background-size:cover" wx:for="{{searchMes.list}}" hidden="{{!wxSearchData.foundContent}}">
+    <navigator class="indexTextMes" url="../product/product?shopId={{item.id}}" data-shopId="{{item.id}}" wx:if="{{item.type == 1}}">
+      <view style="font-size:40rpx;line-height: 1.2;max-height:180rpx;overflow:hidden;position:absolute;bottom:100rpx;left:40rpx;right:40rpx;">
+        <view class="price" wx:if="{{item.product_price}}">￥{{item.product_price}}</view>
+        <view>{{item.product_name}}</view>
+      </view>
+      <view style="font-size:22rpx;position:absolute;bottom:40rpx;left:40rpx;">{{item.play_time}}
+        <text style="display:inline-block;margin:0rpx 20rpx">/</text>播放{{item.product_play_count}}</view>
+    </navigator>
+    <navigator class="indexTextMes" url="../normal/normal?shopId={{item.normal_video_id}}" data-shopId="{{item.normal_video_id}}" wx:if="{{item.type == 2}}">
+      <view>
+        <picker-view class="price" wx:if="{{item.price}}">￥{{item.price}}</picker-view>
+      </view>
+      <view style="font-size:40rpx;line-height: 1.2;max-height:94rpx;overflow:hidden;position:absolute;bottom:100rpx;left:40rpx;right:40rpx;">{{item.normal_video_title}}</view>
+      <view style="font-size:22rpx;position:absolute;bottom:40rpx;left:40rpx;">{{item.play_time}}
+        <text style="display:inline-block;margin:0rpx 20rpx">/</text>播放{{item.normal_play_count}}</view>
+    </navigator>
+  </view>
+     <!-- <view hidden="{{!wxSearchData.foundContent}}" style="text-align:center;height:140rpx;"> -->
+        <image src="../../images/noContent.png" hidden="{{novideo}}" class="noContent"></image>
+    <!-- </view> -->
+</view>
+  <view hidden="{{endImg}}" style="text-align:center;height:140rpx;">
+        <image src="../../images/endImg.png" style="width:{{sysWidth}};height:100%"></image>
+    </view> 
