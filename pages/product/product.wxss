@@ -7,12 +7,18 @@
 .proName{
     font-size: 40rpx;
     color: #1a1a1a;
-    margin: 30rpx 40rpx 0rpx 40rpx;
+    margin: 30rpx 40rpx;
+    font-weight: bold;
 }
 .proPrice{
-    font-size: 40rpx;
-    color: #f83269;
-    margin: 30rpx;   
+    font-size:28rpx;
+    color:#fff;
+    margin:40rpx;
+    display:inline-block;
+    background:#ff2e6b;
+    padding:5rpx 20rpx;
+    margin-bottom: 0rpx;
+    font-weight: 900;
 }
 .playCount{
     font-size: 20rpx;
@@ -21,16 +27,15 @@
 }
 .proText{
     font-size: 30rpx;
-    color: #666;
+    color: #333;
     margin: 0rpx 40rpx;
-    padding-bottom: 40rpx;
+    padding-bottom: 20rpx;
+    line-height: 1.5;
 }
 .proUser{
     position: relative;
-    padding: 30rpx 0rpx;
-    border-top: 1rpx solid #ccc;
-    border-bottom: 1rpx solid #ccc;
-    margin: 0px 40rpx;
+    padding: 30rpx 40rpx;
+    background: #f2f2f2;
 }
 .shopInfo{
     margin-top: -94rpx;
@@ -41,7 +46,7 @@
     height: 50rpx;
     width: 120rpx;
     position: absolute;
-    right: 0rpx;
+    right: 40rpx;
     top: 45rpx;
 }
 .shoperIcon{
@@ -91,7 +96,7 @@
 }
 .showerName{
     position: absolute;
-    top: 0rpx;
+    top: 6rpx;
     left: 70rpx;
     line-height: 1;
     font-size: 28rpx;
@@ -101,7 +106,7 @@
 .showCity{
     font-size: 20rpx;
     text-align: left;
-    margin-top: 10rpx;
+    margin-top: 6rpx;
     line-height: 1;
 }
 .buyerText{
@@ -152,6 +157,9 @@
     position: fixed;
     top: 20%;
     height: 100rpx;
+}
+.swiper{
+  height: 375px;
 }
 .dialogVideo{
     width: 100%;
@@ -283,10 +291,10 @@ input{
     background: rgba(0,0,0,.6);
 }
 .topic{
-    background: #000;
-    color: white;
-    padding: 10rpx;
-    font-size: 30rpx;
+    color: #333;
+    border: 1rpx solid #000;
+    padding: 10rpx 20rpx;
+    font-size: 24rpx;
     display: inline-block;
     margin: 0rpx 20rpx 20rpx 0rpx;
 }

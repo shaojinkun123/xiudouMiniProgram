@@ -20,7 +20,8 @@ Page({
         shopCar : true,
         model : true,
         autoplay:false,
-        Bdisabled: false
+        Bdisabled: false,
+        playImg:true
         },
     selected:function(e){
         this.setData({
@@ -53,6 +54,7 @@ Page({
         }
     });
     that.takeProductMes();
+    that.takeBuyersShowList();
   },
   onShow:function(){
         var that = this;
@@ -63,7 +65,7 @@ Page({
   //生成信息
   takeProductMes : function(){
     var that = this;
-    var url = domain + '?version=1.9&request_url=product/product_detail&source=h5x';
+    var url = domain + '?version=2.8.0&request_url=product/product_detail&source=h5x';
     var userInfo = wx.getStorageSync('userInfo');
     var data;
     if(userInfo){
@@ -130,6 +132,18 @@ Page({
     //微信接口调用方法   需定义url,data,success//    可以定义fail,callback
     util.wxUrl(url,data,success);
   },
+  isVideo:function(e){
+    var that = this;
+    if(e.detail.current != 0){
+        that.setData({
+          playImg:false
+        })
+    }else{
+        that.setData({
+          playImg: true
+        })
+    }
+  },
   //生成买家秀首页
   takeBuyersShowList : function(){
       var that = this;
@@ -138,7 +152,7 @@ Page({
           {
                 product_id:that.data.shopId,
                 page:current_page,
-                page_num:10  
+                page_num:20  
           }
         var success = function(res)
         {

@@ -12,9 +12,9 @@
             <view style="color:white;margin:18rpx 0rpx 26rpx 0rpx;" class="oneLine">{{userInfo.nick_name}}</view>
         </view>
     </picker-view> 
-    <view wx:for="{{userMenu}}" style="position:relative">
+    <!-- <view wx:for="{{userMenu}}" style="position:relative">
         <image src="{{item.icon}}" class="icon"></image>
         <navigator url="{{item.url}}" class="userMenu">{{item.menu}}</navigator> 
         <image src="../../images/grayArrow.png" class="grayArrow"></image>
-    </view>
+    </view> -->
 </view>

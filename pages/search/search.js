@@ -82,7 +82,7 @@ Page({
             getTap: false
             // novideo:true
         })
-        var url = domain + '?version=2.7.32&request_url=index/search_list&source=h5x';
+        var url = domain + '?version=2.7.41&request_url=index/search_list&source=h5x';
         var data =
             {
                 current_page: 1,

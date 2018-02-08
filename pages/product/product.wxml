@@ -1,9 +1,9 @@
 <!--toubutab-->
-<picker-view class="topTab">
+ <!-- <picker-view class="topTab">
     <view class='oneTab' wx:if="{{productMes.buyer_show_total == 0}}">商品详情</view>
     <view class="{{selected?'tab':'tab1'}}" bindtap="selected"  wx:if="{{productMes.buyer_show_total != 0}}">商品详情</view>
     <view class="{{selected1?'tab':'tab1'}}" bindtap="selected1" wx:if="{{productMes.buyer_show_total != 0}}">买家秀 {{productMes.buyer_show_total}}</view>
-</picker-view>
+</picker-view>  -->
 
 <!--买家秀弹出的video-->
 <view class="dialog" hidden="{{dialog}}" style="height:{{sysHeight}}px;width:{{sysWidth}}px">
@@ -13,7 +13,7 @@
 <!--产品弹出的video-->
 <view class="dialog" hidden="{{dialog1}}" style="height:{{sysHeight}}px;width:{{susWidth}}px">
         <image src="../../images/close.png" style="height:120px;width:80px;margin-left:80%;" bindtap="close"></image>
-        <video src="{{productMes.product_video_stream}}" id="productVideo" autoplay="{{autoplay}}" style="width:{{sysWidth}}px;margin-top:{{sysWidth/6}}px" bindplay="playCountAdd"></video>
+        <video src="{{productMes.video_image_list[0].video_https_url}}" id="productVideo" autoplay="{{autoplay}}" style="width:{{sysWidth}}px;margin-top:{{sysWidth/6}}px" bindplay="playCountAdd"></video>
 </view>
 <!--弹出的轮播图-->
 <swiper indicator-dots="{{true}}" autoplay="{{autoplay}}" interval="{{2200}}" duration="{{400}}" hidden="{{imgsHide}}" class="showerSwiper"
@@ -27,51 +27,15 @@ style="height:50%;width:{{sysWidth}}px" current="{{index - 1}}">
 
 
 <!--商品详情-->
-<view class="{{selected?'show':'hidden'}}" style="padding-bottom:100rpx;">
-    <!--<video src="{{productMes.product_video_stream}}" style="width:{{sysWidth}};height:750rpx;"></video>-->
-    <view style="background:url({{productMes.header_image}}) 50% 50% no-repeat;width:{{sysWidth}}px;height:{{sysWidth}}px"></view>
-    <image src="../../images/bofang.png" class="play" bindtap="playProduct" style="position:absolute;top:{{sysWidth/2}}px;height:180rpx;width:180rpx;left:{{sysWidth/2-45}}px"></image>
-    <view>
-        <view class="proName">{{productMes.product_name}}</view>
-        <view class="proPrice" wx:if="{{productMes.spike_delivery_price > 0}}">{{productMes.min_price}} <text> {{productMes.spike_delivery_price}} </text></view>
-        <view class="proPrice" wx:else>￥{{productMes.min_price}} <text wx:if="{{product_delivery_price == 0}}">包邮</text></view>
-        <view class="proText">{{productMes.product_description}}</view>
-        <view style="padding:30rpx 40rpx;padding-top:0rpx;" wx:if="{{productMes.topics}}">
-            <navigator url="../topic/topic?topic={{item}}" class="topic" wx:for="{{productMes.topics}}" open-type="redirect">#{{item}}</navigator> 
-        </view>
-        <view class="playCount">播放{{productMes.video_play_count}}</view>
-        <view class="proUser">
-            <image src="{{productMes.user.avatar}}" class="avatar"></image>
-            <image src="../../images/daren.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_celebrity_vip == 1}}"></image>
-            <image src="../../images/geren.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_vip == 1}}"></image>
-            <image src="../../images/guanfang.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_official_vip == 1}}"></image>
-            <view class="shopInfo">
-                <view>
-                    <text style="font-size:28rpx;color:#333" class="oneLine">{{productMes.user.nick_name}}</text>
-                </view>
-                <view>
-                    <text style="font-size:20rpx;color:#808080;">粉丝 {{productMes.user.fans_count}} | 关注{{productMes.user.friend_shop_count}}</text>
-                </view>
-                <picker-view bindtap="showIconMes">
-                    <image src="../../images/qitian1.png" class="shoperIcon" wx:if="{{productMes.user.shop_agreement.length > 0}}"></image>
-                    <!--<image src="../../images/yongjin1.png" class="shoperIcon" wx:if="{{productMes.forward_charge > 0}}"></image>-->
-                    <image src="../../images/quan1.png" class="shoperIcon" wx:if="{{productMes.shop_coupon !=0}}"></image>
-                </picker-view>                 
-            </view>
-            <image src="../../images/faved.png" class="faved" bindtap="faved" hidden="{{faved}}"></image>
-            <image src="../../images/hasfaved.png" class="faved" bindtap="hasfaved" hidden="{{hasFaved}}"></image>        
-        </view>
-        <view wx:for="{{productMes.product_image}}">
-            <image src="{{item.image}}" style='width:{{sysWidth}}px' mode="widthFix"></image>
-        </view>
-    </view>
+<view class="{{selected?'show':'hidden'}}">
+   
 
 <!--购买流程-->
-    <picker-view class="buy" hidden="{{cantBuySelf}}">
+    <!-- <picker-view class="buy" hidden="{{cantBuySelf}}">
         <view class="shopCar" bindtap="openSpec" data-shopCar="shopCar">加入购物车</view>
         <view class="buyNow" bindtap="openSpec"  wx:if="{{!buyShowButton}}">立即购买</view>
         <view class="buyNow" bindtap="openSpec"  wx:else style="background:#ddd;">已售完</view>
-    </picker-view>
+    </picker-view> -->
     <view style="height:{{sysHeight}}px;width:{{sysWidth}}px;background:rgba(0,0,0,.3);position:fixed;top:0rpx;"  hidden="{{specHidden}}">
         <view class="spec" >
             <picker-view class="productMessage">
@@ -122,7 +86,53 @@ style="height:50%;width:{{sysWidth}}px" current="{{index - 1}}">
 </view>
 
 <!--评论详情-->
-<scroll-view class="{{selected1?'show':'hidden'}}" scroll-y="true" lower-threshold='50px' bindscrolltolower="loadMore" style="height:{{sysHeight}}px;width:{{sysWidth}}px;">
+<scroll-view class="show" scroll-y="true" lower-threshold='50px' bindscrolltolower="loadMore" style="height:{{sysHeight}}px;width:{{sysWidth}}px;">
+    <swiper indicator-dots="true" indicator-active-color='#ff2e6b' indicator-color='rgba(255,255,255,.3)' class='swiper' bindchange="isVideo">
+      <block wx:for="{{productMes.video_image_list}}">
+        <swiper-item>
+          <view style='background:url({{item.image_url}}) 50% 50% /cover;height:375px;'></view>
+          <!-- <image src="{{item.image_url}}" class="slide-image" mode='scaleToFill'/> -->
+        </swiper-item>
+      </block>
+    </swiper>
+ <!--<video src="{{productMes.product_video_stream}}" style="width:{{sysWidth}};height:750rpx;"></video>-->
+    <!-- <view style="background:url({{productMes.header_image}}) 50% 50% no-repeat;width:{{sysWidth}}px;height:{{sysWidth}}px"></view> -->
+    <image src="../../images/bofang.png" class="play" bindtap="playProduct" style="position:absolute;top:{{sysWidth/2 -28}}px;height:120rpx;width:120rpx;left:{{sysWidth/2-28}}px" hidden='{{!playImg}}'></image>
+    <view>
+         <view class="proPrice" wx:if="{{productMes.spike_delivery_price > 0}}">{{productMes.min_price}} <text> {{productMes.spike_delivery_price}} </text></view>
+        <view class="proPrice" wx:else>￥{{productMes.min_price}}</view>
+        <view class="proName">{{productMes.product_name}}</view>
+        <view style="margin:0rpx 40rpx;" wx:if="{{productMes.topics}}">
+            <navigator url="../topic/topic?topic={{item}}" class="topic" wx:for="{{productMes.topics}}" open-type="redirect">#{{item}}</navigator> 
+        </view>
+                <view class="proText">{{productMes.product_description}}阿萨德法师打发手动阀asdfasdf阿萨德法师打发手动阀asdfasdf阿萨德法师打发手动阀</view>
+        <view class="playCount">浏览{{productMes.product_views_count}}</view>
+        <view class="proUser">
+            <image src="{{productMes.user.avatar}}" class="avatar"  mode='aspectFill'></image>
+            <image src="../../images/daren.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_celebrity_vip == 1}}"></image>
+            <image src="../../images/geren.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_vip == 1}}"></image>
+            <image src="../../images/guanfang.png" class="shoperIcons" wx:if="{{productMes.user.certification.if_official_vip == 1}}"></image>
+            <view class="shopInfo">
+                <view>
+                    <text style="font-size:28rpx;color:#333;margin-top:8rpx" class="oneLine">{{productMes.user.nick_name}}</text>
+                </view>
+                <view style='margin-top:-14rpx;'>
+                    <text style="font-size:20rpx;color:#808080;">粉丝 {{productMes.user.fans_count}} | 关注{{productMes.user.friend_shop_count}}</text>
+                </view>
+                <picker-view bindtap="showIconMes">
+                    <image src="../../images/qitian1.png" class="shoperIcon" wx:if="{{productMes.user.shop_agreement.length > 0}}"></image>
+                    <!--<image src="../../images/yongjin1.png" class="shoperIcon" wx:if="{{productMes.forward_charge > 0}}"></image>-->
+                    <image src="../../images/quan1.png" class="shoperIcon" wx:if="{{productMes.shop_coupon !=0}}"></image>
+                </picker-view>                 
+            </view>
+            <image src="../../images/faved.png" class="faved" bindtap="faved" hidden="{{faved}}"></image>
+            <image src="../../images/hasfaved.png" class="faved" bindtap="hasfaved" hidden="{{hasFaved}}"></image>        
+        </view>
+        <view wx:for="{{productMes.product_image}}">
+            <image src="{{item.image}}" style='width:{{sysWidth}}px' mode="widthFix"></image>
+        </view>
+    </view>
+    <view wx:if="{{buyersShowList}}" style='font-size:28rpx;height:90rpx;line-height:120rpx;margin-left:40rpx;font-weight:700;'>买家秀</view>
 <view wx:for="{{buyersShowList}}" class="BuyerShowBox">
     <picker-view clss="BuyerShowBoxUser">
         <image src="{{item.user.avatar}}" class="avatarSmall"></image>
@@ -157,9 +167,9 @@ style="height:50%;width:{{sysWidth}}px" current="{{index - 1}}">
         </view>
     </view>
 </view>
-<view hidden="{{hidden}}" style="text-align:center;height:100rpx;">
+ <view hidden="{{hidden}}" style="text-align:center;height:100rpx;">
     <image src="../../images/jiazai2.gif" style="height:60rpx;width:60rpx;"></image>
-</view>   
+</view>    
 <view hidden="{{endImg}}" style="text-align:center;height:140rpx;margin-top:-30rpx">
     <image src="../../images/endImg.png" style="width:{{sysWidth}}px;height:100%"></image>
 </view>            

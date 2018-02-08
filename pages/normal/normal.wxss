@@ -1,21 +1,29 @@
 @import "../product/product.wxss";
-.playCount{
-    margin-top: 30rpx;
+.proUser{
+    margin: 0rpx;
+    padding: 30rpx 40rpx;
 }
 .internalProducts{
-    margin: 0rpx 40rpx;
     height: 100rpx;
-    text-align: center;
+    text-align: left;
     line-height: 100rpx;
     font-size: 25rpx;
-    border-bottom: 1rpx solid #f1f1f1;
+}
+.proName{
+    color:#000;
+    padding-bottom:30rpx;
+    font-weight:500;
+    margin-bottom:0rpx;
+}
+.faved{
+  margin-right: 40rpx;
 }
 .aboutImg{
-    height: 180rpx;
-    width: 260rpx; 
+    height: 160rpx;
+    width: 160rpx; 
 }
 .aboutProduct{
-    padding: 30rpx 40rpx;
+    padding:40rpx;
 }
 .aboutName{
     font-size: 28rpx;
@@ -30,16 +38,20 @@
     background: #ff2e6b;
     display: inline-block;
     padding: 0rpx 10rpx;
-    margin-top: 100rpx;
+    margin-top: 78rpx;
 }
 .buyerText{
     padding-bottom: 20rpx;
-    margin-right: 40rpx;
+    margin-right: 0rpx;
+    margin-left: 0rpx;
 }
 .zanBox{
     position: absolute;
     top: 0px;
-    right: 60px;
+    right: 40px;
+}
+.comment{
+  padding-left: 64rpx;
 }
 .zan{
     height: 28rpx;
@@ -59,5 +71,13 @@
     width:100%;
 }
 .richText{
-  padding: 20rpx 40rpx;
+  padding:40rpx;
+  padding-top: 0rpx;
+  font-size: 32rpx;
+  color: #000;
+  line-height: 2;
+}
+.gap{
+  height: 20rpx;
+  background: #f2f2f2;
 }
